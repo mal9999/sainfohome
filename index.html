@@ -44,25 +44,36 @@
     transition: all 0.4s ease;
   }
   header.scrolled {
-    background: rgba(240,238,230,0.82);
+    background: rgba(255,255,255,0.85);
     backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--line);
-    padding: 16px 0;
+    border-bottom: 1px solid var(--line-soft);
+    padding: 14px 0;
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; }
   .logo {
-    display: flex; align-items: center; gap: 11px;
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 23px;
-    letter-spacing: -0.3px;
+    display: flex; align-items: center; gap: 13px;
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 25px;
+    letter-spacing: -0.8px;
     color: var(--ink);
+    text-decoration: none;
   }
   .logo-mark {
-    width: 36px; height: 36px;
+    width: 48px; height: 48px;
     flex-shrink: 0;
   }
-  .logo span { color: var(--clay); }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-text .ko { font-size: 22px; font-weight: 800; letter-spacing: -0.8px; }
+  .logo-text .ko span { color: var(--clay); }
+  .logo-text .en {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--ink-muted);
+    margin-top: 3px;
+  }
+  header.scrolled .logo-mark { width: 42px; height: 42px; }
   nav ul { display: flex; gap: 36px; list-style: none; align-items: center; }
   nav a {
     text-decoration: none;
@@ -493,7 +504,9 @@
   .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 34px; padding-bottom: 40px; border-bottom: 1px solid rgba(234,244,251,0.12); }
   .footer-brand { max-width: 320px; }
   .footer-brand .logo { color: #EAF4FB; margin-bottom: 16px; }
-  .footer-brand .logo span { color: var(--cyan); }
+  .footer-brand .logo .ko { color: #EAF4FB; }
+  .footer-brand .logo .ko span { color: var(--cyan); }
+  .footer-brand .logo .en { color: rgba(234,244,251,0.5); }
   .footer-brand p { font-size: 14px; line-height: 1.7; }
   .footer-cols { display: flex; gap: 60px; flex-wrap: wrap; }
   .footer-col h5 { color: #EAF4FB; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
@@ -558,7 +571,10 @@
   <div class="container nav-inner">
     <a href="#home" class="logo">
       <svg class="logo-mark" viewBox="0 0 100 100"><use href="#saeam-symbol"/></svg>
-      새암<span>정보</span>
+      <span class="logo-text">
+        <span class="ko">새암<span>정보</span></span>
+        <span class="en">SAEAM INFORMATION</span>
+      </span>
     </a>
     <nav>
       <ul>
@@ -827,7 +843,7 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#home" class="logo"><svg class="logo-mark" viewBox="0 0 100 100"><use href="#saeam-symbol"/></svg>새암<span>정보</span></a>
+        <a href="#home" class="logo"><svg class="logo-mark" viewBox="0 0 100 100"><use href="#saeam-symbol"/></svg><span class="logo-text"><span class="ko">새암<span>정보</span></span><span class="en">SAEAM INFORMATION</span></span></a>
         <p>제조와 공공의 디지털 혁신을 지원하는 IT 전문기업. 검증된 기술과 신뢰로 고객의 성장을 함께합니다.</p>
       </div>
       <div class="footer-cols">
