@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주식회사 새암정보 | 제조·공공 IT 전문기업</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg-card: #F4F8FC;
+    --bg-deep: #0A2647;
+    --ink: #0E2A4A;
+    --ink-soft: #3A526E;
+    --ink-muted: #6B7E96;
+    --clay: #0A5BA8;
+    --clay-soft: #2E9BD6;
+    --clay-bg: #E3F1FB;
+    --cyan: #41BEE8;
+    --navy: #0A3A6B;
+    --line: #E1EAF2;
+    --line-soft: #EDF3F8;
+    --serif: 'Georgia', 'Times New Roman', 'Nanum Myeongjo', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.65;
+    background: var(--bg);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* ===== Navigation ===== */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 24px 0;
+    transition: all 0.4s ease;
+  }
+  header.scrolled {
+    background: rgba(240,238,230,0.82);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+  .logo {
+    display: flex; align-items: center; gap: 11px;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 23px;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+  }
+  .logo-mark {
+    width: 36px; height: 36px;
+    flex-shrink: 0;
+  }
+  .logo span { color: var(--clay); }
+  nav ul { display: flex; gap: 36px; list-style: none; align-items: center; }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  nav a:hover { color: var(--clay); }
+  .nav-cta {
+    padding: 10px 20px;
+    background: var(--ink);
+    color: var(--bg) !important;
+    border-radius: 100px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+  }
+  .nav-cta:hover { background: var(--clay); transform: translateY(-1px); }
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+
+  /* ===== Hero ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 120px 0 80px;
+    overflow: hidden;
+  }
+  .hero-arc {
+    position: absolute;
+    top: -30%; right: -8%;
+    width: 720px; height: 720px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, var(--clay-bg), transparent 68%);
+    pointer-events: none;
+  }
+  .hero-arc.two {
+    top: auto; right: auto;
+    bottom: -36%; left: -14%;
+    width: 560px; height: 560px;
+    background: radial-gradient(circle at 50% 50%, rgba(65,190,232,0.14), transparent 68%);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 17px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .hero-badge .dot { width: 7px; height: 7px; background: var(--clay); border-radius: 50%; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 500;
+    line-height: 1.14;
+    letter-spacing: -1.5px;
+    color: var(--ink);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.12s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--clay);
+  }
+  .hero p {
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin-bottom: 40px;
+    line-height: 1.75;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.26s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 13px; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+  .btn {
+    padding: 15px 30px;
+    border-radius: 100px;
+    font-size: 15.5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    border: none;
+    font-family: var(--sans);
+  }
+  .btn-primary {
+    background: var(--clay);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #A94E2F; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(194,96,61,0.3); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+  .hero-arrow { transition: transform 0.25s ease; }
+  .btn-primary:hover .hero-arrow { transform: translateX(4px); }
+
+  /* ===== Section general ===== */
+  section { padding: 120px 0; }
+  .section-head { max-width: 720px; margin: 0 auto 70px; text-align: center; }
+  .section-tag {
+    display: inline-block;
+    color: var(--clay);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4.4vw, 48px);
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 1.22;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  .section-head h2 em { font-style: italic; color: var(--clay); }
+  .section-head p { font-size: 17px; color: var(--ink-muted); line-height: 1.75; }
+
+  .reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== About / Stats ===== */
+  .about { background: var(--bg); }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 38px 26px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .stat-card:hover { transform: translateY(-5px); border-color: var(--clay-soft); }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 46px;
+    font-weight: 500;
+    color: var(--clay);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .stat-num .suffix { font-size: 24px; }
+  .stat-label { margin-top: 12px; color: var(--ink-muted); font-size: 14.5px; font-weight: 500; }
+
+  /* ===== Mission / Vision ===== */
+  .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 54px; }
+  .mv-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 42px 40px;
+    transition: all 0.3s ease;
+  }
+  .mv-card:hover { transform: translateY(-5px); border-color: var(--clay-soft); }
+  .mv-head { display: flex; align-items: center; gap: 13px; margin-bottom: 26px; }
+  .mv-icon {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--clay-bg);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .mv-icon svg { width: 23px; height: 23px; stroke: var(--clay); }
+  .mv-head h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--ink); }
+  .mv-list { list-style: none; }
+  .mv-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 14px;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .mv-list li:last-child { margin-bottom: 0; }
+  .mv-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 10px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--clay);
+  }
+
+  /* ===== Business areas ===== */
+  .business { background: var(--bg-card); }
+  .biz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .biz-card {
+    position: relative;
+    border-radius: 24px;
+    padding: 46px 42px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .biz-card:hover { transform: translateY(-7px); box-shadow: 0 26px 50px rgba(31,30,26,0.09); }
+  .biz-icon {
+    width: 58px; height: 58px;
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 26px;
+    background: var(--clay-bg);
+  }
+  .biz-icon svg { width: 29px; height: 29px; stroke: var(--clay); }
+  .biz-card h3 { font-family: var(--serif); font-size: 27px; font-weight: 500; margin-bottom: 14px; letter-spacing: -0.4px; color: var(--ink); }
+  .biz-card > p { font-size: 15.5px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 28px; }
+  .biz-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+  .biz-tag {
+    padding: 8px 15px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .biz-extra {
+    margin-top: 24px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 36px 42px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    transition: all 0.3s ease;
+  }
+  .biz-extra:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(31,30,26,0.07); }
+  .biz-extra-icon {
+    width: 58px; height: 58px;
+    border-radius: 16px;
+    background: var(--clay-bg);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .biz-extra-icon svg { width: 29px; height: 29px; stroke: var(--clay); }
+  .biz-extra-body { flex: 1; min-width: 200px; }
+  .biz-extra-body h3 { font-family: var(--serif); font-size: 22px; font-weight: 500; margin-bottom: 7px; color: var(--ink); }
+  .biz-extra-body p { font-size: 15px; color: var(--ink-muted); line-height: 1.6; }
+  .biz-extra-tags { display: flex; flex-wrap: wrap; gap: 9px; flex-shrink: 0; }
+  .biz-tag-light {
+    padding: 9px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* ===== Clients ===== */
+  .clients { background: var(--bg); }
+  .client-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 920px; margin: 0 auto; }
+  .client-group {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 38px 36px;
+    transition: all 0.3s ease;
+  }
+  .client-group:hover { transform: translateY(-5px); border-color: var(--clay-soft); }
+  .client-group-label {
+    display: flex; align-items: center; gap: 11px;
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .cg-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--clay-bg);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cg-icon svg { width: 20px; height: 20px; stroke: var(--clay); }
+  .client-logos { display: flex; flex-wrap: wrap; gap: 11px; }
+  .client-chip {
+    padding: 12px 20px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: all 0.25s ease;
+  }
+  .client-chip:hover { border-color: var(--clay); color: var(--clay); }
+
+  /* ===== AI Capability ===== */
+  .ai-section { background: var(--bg-deep); position: relative; overflow: hidden; }
+  .ai-section .hero-arc { top: -20%; right: -6%; background: radial-gradient(circle at 50% 50%, rgba(65,190,232,0.2), transparent 66%); }
+  .ai-section .section-head h2 { color: #EAF4FB; }
+  .ai-section .section-head h2 em { color: var(--cyan); }
+  .ai-section .section-head p { color: rgba(234,244,251,0.62); }
+  .ai-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; position: relative; z-index: 2; }
+  .ai-card {
+    background: rgba(234,244,251,0.05);
+    border: 1px solid rgba(234,244,251,0.12);
+    border-radius: 20px;
+    padding: 38px 32px;
+    transition: all 0.35s ease;
+  }
+  .ai-card:hover { background: rgba(65,190,232,0.1); border-color: rgba(65,190,232,0.4); transform: translateY(-5px); }
+  .ai-card .num { font-family: var(--serif); font-size: 30px; color: var(--cyan); margin-bottom: 18px; }
+  .ai-card h4 { color: #EAF4FB; font-family: var(--serif); font-size: 21px; font-weight: 500; margin-bottom: 12px; }
+  .ai-card p { color: rgba(234,244,251,0.6); font-size: 14.5px; line-height: 1.7; }
+
+  /* ===== History ===== */
+  .history { background: var(--bg-card); }
+  .timeline { max-width: 760px; margin: 0 auto; position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 116px; top: 8px; bottom: 8px;
+    width: 1.5px;
+    background: var(--line);
+  }
+  .tl-item { display: flex; gap: 38px; margin-bottom: 40px; position: relative; }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-year {
+    width: 86px; text-align: right;
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--clay);
+    flex-shrink: 0;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: 110px; top: 8px;
+    width: 13px; height: 13px;
+    border-radius: 50%;
+    background: var(--clay);
+    border: 3px solid var(--bg-card);
+    box-shadow: 0 0 0 1.5px var(--clay-soft);
+  }
+  .tl-body { padding-left: 22px; }
+  .tl-body h4 { font-size: 18px; font-weight: 600; margin-bottom: 5px; color: var(--ink); }
+  .tl-body p { color: var(--ink-muted); font-size: 14.5px; line-height: 1.65; }
+
+  /* ===== Contact ===== */
+  .contact { background: var(--bg); }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+  .contact-info h2 {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 500;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    line-height: 1.22;
+    color: var(--ink);
+  }
+  .contact-info h2 em { font-style: italic; color: var(--clay); }
+  .contact-info > p { color: var(--ink-muted); font-size: 16.5px; margin-bottom: 38px; line-height: 1.75; }
+  .contact-detail { display: flex; gap: 16px; margin-bottom: 22px; align-items: flex-start; }
+  .contact-detail .ic {
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    background: var(--clay-bg);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-detail .ic svg { width: 21px; height: 21px; stroke: var(--clay); }
+  .contact-detail .txt .label { font-size: 13px; color: var(--ink-muted); margin-bottom: 2px; }
+  .contact-detail .txt .val { font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.5; }
+
+  .contact-form {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 44px;
+    border: 1px solid var(--line);
+  }
+  .form-row { margin-bottom: 20px; }
+  .form-row.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-row label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--ink-soft); }
+  .form-row input, .form-row textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: var(--sans);
+    transition: all 0.2s ease;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .form-row input:focus, .form-row textarea:focus {
+    outline: none;
+    border-color: var(--clay);
+    background: var(--bg-card);
+    box-shadow: 0 0 0 3px rgba(194,96,61,0.1);
+  }
+  .form-row textarea { resize: vertical; min-height: 120px; }
+  .form-submit { width: 100%; justify-content: center; padding: 16px; font-size: 16px; }
+  .form-note { text-align: center; font-size: 13px; color: var(--ink-muted); margin-top: 14px; }
+
+  /* ===== Footer ===== */
+  footer { background: var(--bg-deep); color: rgba(234,244,251,0.62); padding: 64px 0 36px; }
+  .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 34px; padding-bottom: 40px; border-bottom: 1px solid rgba(234,244,251,0.12); }
+  .footer-brand { max-width: 320px; }
+  .footer-brand .logo { color: #EAF4FB; margin-bottom: 16px; }
+  .footer-brand .logo span { color: var(--cyan); }
+  .footer-brand p { font-size: 14px; line-height: 1.7; }
+  .footer-cols { display: flex; gap: 60px; flex-wrap: wrap; }
+  .footer-col h5 { color: #EAF4FB; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+  .footer-col a { display: block; color: rgba(234,244,251,0.55); text-decoration: none; font-size: 14px; margin-bottom: 11px; transition: color 0.2s ease; }
+  .footer-col a:hover { color: var(--cyan); }
+  .footer-bottom { padding-top: 26px; font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: rgba(234,244,251,0.45); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    .menu-toggle { display: block; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .mv-grid { grid-template-columns: 1fr; }
+    .biz-grid { grid-template-columns: 1fr; }
+    .biz-extra { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .ai-features { grid-template-columns: 1fr; }
+    .client-groups { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+    section { padding: 84px 0; }
+    .timeline::before { left: 66px; }
+    .tl-year { width: 52px; font-size: 19px; }
+    .tl-item::before { left: 60px; }
+    .tl-item { gap: 22px; }
+  }
+  @media (max-width: 540px) {
+    .stats { grid-template-columns: 1fr; }
+    .form-row.two { grid-template-columns: 1fr; }
+    .contact-form { padding: 30px 24px; }
+    .hero-actions { flex-direction: column; }
+    .btn { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable logo symbol -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="saeamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5CCBEE"/>
+      <stop offset="100%" stop-color="#0A4D8C"/>
+    </linearGradient>
+    <linearGradient id="saeamGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7DD6F0"/>
+      <stop offset="100%" stop-color="#3BA5DC"/>
+    </linearGradient>
+  </defs>
+  <symbol id="saeam-symbol" viewBox="0 0 100 100">
+    <!-- 위쪽 물방울 꼬리 (밝은 시안) -->
+    <path d="M30 16 C44 8 64 12 68 26 C70 34 64 40 55 41 C63 38 66 31 62 25 C57 17 43 16 33 22 C28 25 27 21 30 16 Z" fill="url(#saeamGradLight)"/>
+    <!-- 가운데 S 본체 (진한 네이비 그라데이션) -->
+    <path d="M64 30 C72 36 70 47 60 52 C50 57 40 56 32 64 C30 56 38 51 47 49 C56 47 60 41 56 35 C53 31 47 31 42 34 C48 28 58 26 64 30 Z" fill="url(#saeamGrad)"/>
+    <!-- 아래쪽 물방울 꼬리 (밝은 시안) -->
+    <path d="M70 60 C56 70 36 68 30 54 C27 46 33 39 43 39 C35 42 32 49 36 55 C42 64 57 64 67 57 C72 54 73 56 70 60 Z" fill="url(#saeamGradLight)"/>
+  </symbol>
+</svg>
+
+<!-- Navigation -->
+<header id="header">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">
+      <svg class="logo-mark" viewBox="0 0 100 100"><use href="#saeam-symbol"/></svg>
+      새암<span>정보</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#about">회사소개</a></li>
+        <li><a href="#business">사업영역</a></li>
+        <li><a href="#clients">고객사</a></li>
+        <li><a href="#ai">AI 역량</a></li>
+        <li><a href="#history">연혁</a></li>
+        <li><a href="#contact" class="nav-cta">문의하기</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-arc"></div>
+  <div class="hero-arc two"></div>
+  <div class="container hero-content">
+    <div class="hero-badge"><span class="dot"></span>2014년부터 함께한 제조·공공 IT 파트너</div>
+    <h1>고객의 능력이<br><em>샘솟듯</em> 넘쳐나도록</h1>
+    <p>주식회사 새암정보는 제조업과 공공부문의 디지털 혁신을 지원하는 IT 전문기업입니다. 끊임없는 기술 혁신으로 고객에게 최상의 가치를 제공합니다.</p>
+    <div class="hero-actions">
+      <a href="#business" class="btn btn-primary">사업영역 보기 <span class="hero-arrow">→</span></a>
+      <a href="#contact" class="btn btn-ghost">문의하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- About / Stats -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">About Saeam</span>
+      <h2>'새암'은 <em>샘</em>의 옛말입니다</h2>
+      <p>고객의 기술과 능력이 샘솟듯 넘쳐날 수 있도록, 맞춤형 IT 솔루션으로 기업의 지속 가능한 성장을 돕는 신뢰할 수 있는 파트너가 되겠습니다.</p>
+    </div>
+    <div class="stats">
+      <div class="stat-card reveal"><div class="stat-num">2014</div><div class="stat-label">설립 연도</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="2"><span class="suffix">대</span></div><div class="stat-label">제조·공공 핵심 사업</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="10"><span class="suffix">+</span></div><div class="stat-label">주요 고객사</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="11"><span class="suffix">년+</span></div><div class="stat-label">축적된 전문성</div></div>
+    </div>
+
+    <div class="mv-grid">
+      <div class="mv-card reveal">
+        <div class="mv-head">
+          <span class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></span>
+          <h3>Mission</h3>
+        </div>
+        <ul class="mv-list">
+          <li>끊임없는 기술 혁신을 통해 고객에게 최상의 가치 제공</li>
+          <li>맞춤형 IT 솔루션으로 경쟁력 강화 및 비용 절감 실현</li>
+          <li>기업의 지속 가능한 성장과 운영 최적화 지원</li>
+        </ul>
+      </div>
+      <div class="mv-card reveal">
+        <div class="mv-head">
+          <span class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <h3>Vision</h3>
+        </div>
+        <ul class="mv-list">
+          <li>디지털 혁신을 선도하는 글로벌 IT 기업으로 성장</li>
+          <li>스마트 제조 및 공공 IT 서비스를 통한 가치 창출</li>
+          <li>데이터 기반 자동화 기술로 고객사의 운영 효율 증대</li>
+          <li>AI 및 빅데이터를 활용한 최적화된 솔루션 제공</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Business areas -->
+<section class="business" id="business">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">Business Area</span>
+      <h2>제조와 공공을 중심으로,<br><em>영역을 넓혀가는</em> 전문성</h2>
+      <p>제조와 공공 두 핵심 축을 기반으로, 무역·물류와 연구기관 행정까지 다양한 분야의 맞춤형 솔루션을 제공합니다.</p>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M2 20h20M4 20V8l5 3V8l5 3V6l6 4v10"/></svg></div>
+        <h3>제조 Application</h3>
+        <p>MES와 SCM을 중심으로 생산 공정과 공급망 전반을 통합 관리하고, 구매원가·금형까지 아우르는 솔루션으로 제조 경쟁력을 높입니다.</p>
+        <div class="biz-tags">
+          <span class="biz-tag">MES (제조실행)</span>
+          <span class="biz-tag">SCM (공급망관리)</span>
+          <span class="biz-tag">구매원가·단가 관리</span>
+          <span class="biz-tag">금형 관리</span>
+          <span class="biz-tag">생산공정 모니터링</span>
+        </div>
+      </div>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 21h18M4 21V10l8-5 8 5v11M9 21v-6h6v6"/></svg></div>
+        <h3>공공 Application</h3>
+        <p>교육행정정보시스템(NICE) 유지보수와 기능개선, 4세대 나이스 기술지원을 수행하며, 국민이 신뢰할 수 있는 안정적인 공공 서비스를 실현합니다.</p>
+        <div class="biz-tags">
+          <span class="biz-tag">NICE 유지보수</span>
+          <span class="biz-tag">나이스 기능개선</span>
+          <span class="biz-tag">4세대 나이스 기술지원</span>
+          <span class="biz-tag">유치원 입학관리</span>
+          <span class="biz-tag">연구기관 행정시스템</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="biz-extra reveal">
+      <div class="biz-extra-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="biz-extra-body">
+        <h3>기타 IT 사업</h3>
+        <p>무역·물류 관리부터 연구기관 종합행정까지, 고객의 업무 환경에 맞춘 시스템을 구축합니다.</p>
+      </div>
+      <div class="biz-extra-tags">
+        <span class="biz-tag-light">무역·물류 관리 시스템</span>
+        <span class="biz-tag-light">연구기관 종합행정 시스템</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clients -->
+<section class="clients" id="clients">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">Clients</span>
+      <h2>신뢰가 만든 <em>레퍼런스</em></h2>
+      <p>제조와 공공 각 분야의 주요 고객과 함께 검증된 성과를 만들어 왔습니다.</p>
+    </div>
+    <div class="client-groups">
+      <div class="client-group reveal">
+        <div class="client-group-label">
+          <span class="cg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M2 20h20M4 20V8l5 3V8l5 3V6l6 4v10"/></svg></span>
+          제조 · 유통
+        </div>
+        <div class="client-logos">
+          <div class="client-chip">평화발레오</div>
+          <div class="client-chip">평화정공</div>
+          <div class="client-chip">VPH메탈</div>
+          <div class="client-chip">VPHC</div>
+          <div class="client-chip">VPH</div>
+          <div class="client-chip">크레택</div>
+        </div>
+      </div>
+      <div class="client-group reveal">
+        <div class="client-group-label">
+          <span class="cg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 21h18M4 21V10l8-5 8 5v11M9 21v-6h6v6"/></svg></span>
+          공공 · 교육 · 연구
+        </div>
+        <div class="client-logos">
+          <div class="client-chip">한국교육학술정보원(KERIS)</div>
+          <div class="client-chip">한국산업인력공단</div>
+          <div class="client-chip">대구광역시청</div>
+          <div class="client-chip">DGIST</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Capability -->
+<section class="ai-section" id="ai">
+  <div class="hero-arc"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" style="color:var(--clay-soft)">AI Capability</span>
+      <h2>축적된 도메인 위에<br><em>인공지능</em>을 더하다</h2>
+      <p>오랜 현장 경험에서 나온 데이터와 노하우에 AI를 결합해, 제조업과 IT 개발의 디지털 혁신을 선도합니다.</p>
+    </div>
+    <div class="ai-features">
+      <div class="ai-card reveal">
+        <div class="num">01</div>
+        <h4>AI 기반 생산계획·재고관리</h4>
+        <p>예측 모델을 활용해 생산 일정을 자동으로 생성하고, 스마트 재고관리로 제조 현장의 운영 효율을 끌어올립니다.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="num">02</div>
+        <h4>AI를 활용한 개발 혁신</h4>
+        <p>코딩 자동화와 지능형 오류 감지·수정으로 소프트웨어 개발 생산성을 높이고 품질을 향상시킵니다.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="num">03</div>
+        <h4>데이터 마이닝·최적화</h4>
+        <p>AI와 빅데이터 기술을 접목해 데이터 기반의 최적화된 솔루션을 제공하고 스마트한 운영을 지원합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- History -->
+<section class="history" id="history">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">History</span>
+      <h2>성장의 <em>발자취</em></h2>
+      <p>한 걸음씩 쌓아온 기술과 신뢰의 기록입니다.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-year">2025</div>
+        <div class="tl-body"><h4>AI 사업본부 신설</h4><p>제조·공공 특화 AI 솔루션 개발 전담 조직을 출범하고 본격적인 AI 전환에 착수했습니다.</p></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2020</div>
+        <div class="tl-body"><h4>디센터 1976으로 사옥 이전</h4><p>창업보육센터에서의 6년을 마무리하고 대구 디센터 1976에 새 둥지를 틀며 한 단계 도약했습니다.</p></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2018</div>
+        <div class="tl-body"><h4>VPH메탈 MES 구축</h4><p>제조 현장 MES 구축 프로젝트를 수행하며 제조 IT 역량을 본격적으로 확장했습니다.</p></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2016</div>
+        <div class="tl-body"><h4>한국교육학술정보원 사업 수행</h4><p>교육 분야 공공 정보화 프로젝트를 수행하며 공공 사업 영역을 한층 넓혔습니다.</p></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2014</div>
+        <div class="tl-body"><h4>주식회사 새암정보 설립</h4><p>영남이공대학교 창업보육센터에서 출발해, 한국산업인력공단 공공 프로젝트와 제조 SCM·MES 구축으로 공공·제조 두 분야에 동시에 첫발을 내디뎠습니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="container contact-wrap">
+    <div class="contact-info reveal">
+      <h2>디지털 전환,<br><em>새암정보</em>와 시작하세요</h2>
+      <p>도입 상담부터 기술 컨설팅까지, 궁금한 점을 남겨 주시면 담당자가 빠르게 연락드리겠습니다.</p>
+      <div class="contact-detail">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="txt"><div class="label">대표전화</div><div class="val">053-217-5630</div></div>
+      </div>
+      <div class="contact-detail">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="txt"><div class="label">이메일</div><div class="val">swchoi@sainfo.co.kr</div></div>
+      </div>
+      <div class="contact-detail">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="txt"><div class="label">오시는 길</div><div class="val">대구광역시 서구 와룡로 307<br>디센터 1976, 608호</div></div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row two">
+        <div><label>회사명</label><input type="text" placeholder="회사명을 입력하세요"></div>
+        <div><label>담당자명</label><input type="text" placeholder="성함을 입력하세요"></div>
+      </div>
+      <div class="form-row two">
+        <div><label>연락처</label><input type="text" placeholder="010-0000-0000"></div>
+        <div><label>이메일</label><input type="email" placeholder="email@company.com"></div>
+      </div>
+      <div class="form-row">
+        <label>문의 내용</label>
+        <textarea placeholder="도입을 검토 중인 사업이나 궁금한 점을 자유롭게 남겨 주세요."></textarea>
+      </div>
+      <button class="btn btn-primary form-submit" onclick="handleSubmit()">문의 보내기 →</button>
+      <p class="form-note">* 본 시안의 문의 폼은 데모용으로, 실제 전송되지 않습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="logo"><svg class="logo-mark" viewBox="0 0 100 100"><use href="#saeam-symbol"/></svg>새암<span>정보</span></a>
+        <p>제조와 공공의 디지털 혁신을 지원하는 IT 전문기업. 검증된 기술과 신뢰로 고객의 성장을 함께합니다.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>회사</h5>
+          <a href="#about">회사소개</a>
+          <a href="#history">연혁</a>
+          <a href="#ai">AI 역량</a>
+        </div>
+        <div class="footer-col">
+          <h5>사업</h5>
+          <a href="#business">제조 솔루션</a>
+          <a href="#business">공공 솔루션</a>
+          <a href="#clients">고객사</a>
+        </div>
+        <div class="footer-col">
+          <h5>문의</h5>
+          <a href="#contact">053-217-5630</a>
+          <a href="#contact">swchoi@sainfo.co.kr</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 주식회사 새암정보. All rights reserved.</div>
+      <div>대구광역시 서구 와룡로 307 디센터 1976 608호</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), (i % 4) * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const counters = document.querySelectorAll('.stat-num[data-target]');
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = +el.dataset.target;
+        const suffix = el.querySelector('.suffix') ? el.querySelector('.suffix').outerHTML : '';
+        let cur = 0;
+        const step = Math.max(1, Math.ceil(target / 40));
+        const tick = () => {
+          cur += step;
+          if (cur >= target) cur = target;
+          el.innerHTML = cur + suffix;
+          if (cur < target) requestAnimationFrame(tick);
+        };
+        tick();
+        counterIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterIO.observe(c));
+
+  function handleSubmit() {
+    alert('문의가 접수되었습니다.\n(본 시안은 데모이며 실제로는 전송되지 않습니다.)');
+  }
+</script>
+</body>
+</html>
