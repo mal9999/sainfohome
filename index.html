@@ -83,6 +83,8 @@
     transition: color 0.2s ease;
   }
   nav a:hover { color: var(--clay); }
+  nav a:focus-visible { outline: 2px solid var(--clay); outline-offset: 4px; border-radius: 4px; }
+  .menu-toggle:focus-visible { outline: 2px solid var(--clay); outline-offset: 4px; border-radius: 8px; }
   .nav-cta {
     padding: 10px 20px;
     background: var(--ink);
@@ -181,7 +183,7 @@
     background: var(--clay);
     color: #fff;
   }
-  .btn-primary:hover { background: #A94E2F; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(194,96,61,0.3); }
+  .btn-primary:hover { background: var(--navy); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(10,91,168,0.3); }
   .btn-ghost {
     background: transparent;
     color: var(--ink);
@@ -493,7 +495,7 @@
     outline: none;
     border-color: var(--clay);
     background: var(--bg-card);
-    box-shadow: 0 0 0 3px rgba(194,96,61,0.1);
+    box-shadow: 0 0 0 3px rgba(10,91,168,0.1);
   }
   .form-row textarea { resize: vertical; min-height: 120px; }
   .form-submit { width: 100%; justify-content: center; padding: 16px; font-size: 16px; }
@@ -518,8 +520,36 @@
 
   /* ===== Responsive ===== */
   @media (max-width: 900px) {
-    nav ul { display: none; }
     .menu-toggle { display: block; }
+    nav ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      position: absolute;
+      top: 100%;
+      left: 16px; right: 16px;
+      margin-top: 8px;
+      padding: 10px;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 18px 44px rgba(10,38,71,0.16);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+    }
+    nav ul.nav-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    nav li { width: 100%; }
+    nav a { display: block; padding: 12px 16px; border-radius: 10px; font-size: 16px; }
+    nav a:hover { background: var(--clay-bg); color: var(--clay); }
     .stats { grid-template-columns: repeat(2, 1fr); }
     .mv-grid { grid-template-columns: 1fr; }
     .biz-grid { grid-template-columns: 1fr; }
@@ -577,7 +607,7 @@
       </span>
     </a>
     <nav>
-      <ul>
+      <ul id="primary-nav">
         <li><a href="#about">회사소개</a></li>
         <li><a href="#business">사업영역</a></li>
         <li><a href="#clients">고객사</a></li>
@@ -586,7 +616,7 @@
         <li><a href="#contact" class="nav-cta">문의하기</a></li>
       </ul>
     </nav>
-    <button class="menu-toggle" aria-label="menu">
+    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primary-nav">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
@@ -910,6 +940,42 @@
     });
   }, { threshold: 0.5 });
   counters.forEach(c => counterIO.observe(c));
+
+  /* Mobile navigation */
+  const menuToggle = document.querySelector('.menu-toggle');
+  const primaryNav = document.getElementById('primary-nav');
+  const mobileNavMq = window.matchMedia('(max-width: 900px)');
+
+  function setMobileNav(open) {
+    primaryNav.classList.toggle('nav-open', open);
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  }
+
+  menuToggle.addEventListener('click', () => {
+    setMobileNav(!primaryNav.classList.contains('nav-open'));
+  });
+
+  primaryNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMobileNav(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && primaryNav.classList.contains('nav-open')) {
+      setMobileNav(false);
+      menuToggle.focus();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!primaryNav.classList.contains('nav-open')) return;
+    if (e.target.closest('nav') || e.target.closest('.menu-toggle')) return;
+    setMobileNav(false);
+  });
+
+  mobileNavMq.addEventListener('change', (e) => {
+    if (!e.matches) setMobileNav(false);
+  });
 
   function handleSubmit() {
     alert('문의가 접수되었습니다.\n(본 시안은 데모이며 실제로는 전송되지 않습니다.)');
