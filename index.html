@@ -4,6 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>주식회사 새암정보 | 제조·공공 IT 전문기업</title>
+<meta name="description" content="주식회사 새암정보는 2014년부터 제조(MES·SCM)와 공공(NEIS)을 중심으로 맞춤형 IT 솔루션과 AI 기반 혁신을 제공하는 IT 전문기업입니다.">
+<meta name="theme-color" content="#0A5BA8">
+<link rel="canonical" href="https://www.sainfo.co.kr/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- Open Graph / SNS 공유 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="주식회사 새암정보">
+<meta property="og:title" content="주식회사 새암정보 | 제조·공공 IT 전문기업">
+<meta property="og:description" content="제조(MES·SCM)와 공공(NEIS)을 중심으로 맞춤형 IT 솔루션과 AI 기반 혁신을 제공하는 IT 전문기업.">
+<meta property="og:url" content="https://www.sainfo.co.kr/">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://www.sainfo.co.kr/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="주식회사 새암정보 | 제조·공공 IT 전문기업">
+<meta name="twitter:description" content="제조(MES·SCM)와 공공(NEIS)을 중심으로 맞춤형 IT 솔루션과 AI 기반 혁신을 제공하는 IT 전문기업.">
+<meta name="twitter:image" content="https://www.sainfo.co.kr/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "주식회사 새암정보",
+  "alternateName": "SAEAM INFORMATION",
+  "url": "https://www.sainfo.co.kr/",
+  "logo": "https://www.sainfo.co.kr/assets/favicon.svg",
+  "foundingDate": "2014",
+  "email": "swchoi@sainfo.co.kr",
+  "telephone": "+82-53-217-5630",
+  "description": "제조(MES·SCM)와 공공(NEIS)을 중심으로 맞춤형 IT 솔루션 및 AI 기반 혁신을 제공하는 IT 전문기업",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "서구 와룡로 307 디센터 1976 608호",
+    "addressLocality": "대구광역시",
+    "addressCountry": "KR"
+  }
+}
+</script>
 <style>
   :root {
     --bg: #FFFFFF;
@@ -11,7 +47,7 @@
     --bg-deep: #0A2647;
     --ink: #0E2A4A;
     --ink-soft: #3A526E;
-    --ink-muted: #6B7E96;
+    --ink-muted: #5F7186;
     --clay: #0A5BA8;
     --clay-soft: #2E9BD6;
     --clay-bg: #E3F1FB;
@@ -24,7 +60,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
   body {
     font-family: var(--sans);
     color: var(--ink);
@@ -470,6 +506,8 @@
   .contact-detail .ic svg { width: 21px; height: 21px; stroke: var(--clay); }
   .contact-detail .txt .label { font-size: 13px; color: var(--ink-muted); margin-bottom: 2px; }
   .contact-detail .txt .val { font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.5; }
+  .contact-detail .txt .val a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+  .contact-detail .txt .val a:hover { color: var(--clay); }
 
   .contact-form {
     background: var(--bg-card);
@@ -514,9 +552,21 @@
   .footer-col h5 { color: #EAF4FB; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
   .footer-col a { display: block; color: rgba(234,244,251,0.55); text-decoration: none; font-size: 14px; margin-bottom: 11px; transition: color 0.2s ease; }
   .footer-col a:hover { color: var(--cyan); }
-  .footer-bottom { padding-top: 26px; font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: rgba(234,244,251,0.45); }
+  .footer-bottom { padding-top: 26px; font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: rgba(234,244,251,0.6); }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ===== Reduced motion ===== */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .hero-badge, .hero h1, .hero p, .hero-actions { opacity: 1 !important; animation: none !important; }
+  }
 
   /* ===== Responsive ===== */
   @media (max-width: 900px) {
@@ -571,6 +621,7 @@
     .btn { justify-content: center; }
   }
 </style>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
 </head>
 <body>
 
@@ -600,7 +651,7 @@
 <header id="header">
   <div class="container nav-inner">
     <a href="#home" class="logo">
-      <svg class="logo-mark" viewBox="0 0 100 100"><use href="#saeam-symbol"/></svg>
+      <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#saeam-symbol"/></svg>
       <span class="logo-text">
         <span class="ko">새암<span>정보</span></span>
         <span class="en">SAEAM INFORMATION</span>
@@ -617,7 +668,7 @@
       </ul>
     </nav>
     <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primary-nav">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
 </header>
@@ -649,13 +700,13 @@
       <div class="stat-card reveal"><div class="stat-num">2014</div><div class="stat-label">설립 연도</div></div>
       <div class="stat-card reveal"><div class="stat-num" data-target="2"><span class="suffix">대</span></div><div class="stat-label">제조·공공 핵심 사업</div></div>
       <div class="stat-card reveal"><div class="stat-num" data-target="10"><span class="suffix">+</span></div><div class="stat-label">주요 고객사</div></div>
-      <div class="stat-card reveal"><div class="stat-num" data-target="11"><span class="suffix">년+</span></div><div class="stat-label">축적된 전문성</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="12"><span class="suffix">년+</span></div><div class="stat-label">축적된 전문성</div></div>
     </div>
 
     <div class="mv-grid">
       <div class="mv-card reveal">
         <div class="mv-head">
-          <span class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></span>
+          <span class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></span>
           <h3>Mission</h3>
         </div>
         <ul class="mv-list">
@@ -666,7 +717,7 @@
       </div>
       <div class="mv-card reveal">
         <div class="mv-head">
-          <span class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <span class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
           <h3>Vision</h3>
         </div>
         <ul class="mv-list">
@@ -690,7 +741,7 @@
     </div>
     <div class="biz-grid">
       <div class="biz-card reveal">
-        <div class="biz-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M2 20h20M4 20V8l5 3V8l5 3V6l6 4v10"/></svg></div>
+        <div class="biz-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M2 20h20M4 20V8l5 3V8l5 3V6l6 4v10"/></svg></div>
         <h3>제조 Application</h3>
         <p>MES와 SCM을 중심으로 생산 공정과 공급망 전반을 통합 관리하고, 구매원가·금형까지 아우르는 솔루션으로 제조 경쟁력을 높입니다.</p>
         <div class="biz-tags">
@@ -702,7 +753,7 @@
         </div>
       </div>
       <div class="biz-card reveal">
-        <div class="biz-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 21h18M4 21V10l8-5 8 5v11M9 21v-6h6v6"/></svg></div>
+        <div class="biz-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M3 21h18M4 21V10l8-5 8 5v11M9 21v-6h6v6"/></svg></div>
         <h3>공공 Application</h3>
         <p>교육행정정보시스템(NEIS) 유지보수와 기능개선, 4세대 나이스 기술지원을 수행하며, 국민이 신뢰할 수 있는 안정적인 공공 서비스를 실현합니다.</p>
         <div class="biz-tags">
@@ -716,7 +767,7 @@
     </div>
 
     <div class="biz-extra reveal">
-      <div class="biz-extra-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="biz-extra-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
       <div class="biz-extra-body">
         <h3>기타 IT 사업</h3>
         <p>무역·물류 관리부터 연구기관 종합행정까지, 고객의 업무 환경에 맞춘 시스템을 구축합니다.</p>
@@ -740,7 +791,7 @@
     <div class="client-groups">
       <div class="client-group reveal">
         <div class="client-group-label">
-          <span class="cg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M2 20h20M4 20V8l5 3V8l5 3V6l6 4v10"/></svg></span>
+          <span class="cg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M2 20h20M4 20V8l5 3V8l5 3V6l6 4v10"/></svg></span>
           제조 · 유통
         </div>
         <div class="client-logos">
@@ -754,7 +805,7 @@
       </div>
       <div class="client-group reveal">
         <div class="client-group-label">
-          <span class="cg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 21h18M4 21V10l8-5 8 5v11M9 21v-6h6v6"/></svg></span>
+          <span class="cg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M3 21h18M4 21V10l8-5 8 5v11M9 21v-6h6v6"/></svg></span>
           공공 · 교육 · 연구
         </div>
         <div class="client-logos">
@@ -837,34 +888,34 @@
       <h2>디지털 전환,<br><em>새암정보</em>와 시작하세요</h2>
       <p>도입 상담부터 기술 컨설팅까지, 궁금한 점을 남겨 주시면 담당자가 빠르게 연락드리겠습니다.</p>
       <div class="contact-detail">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-        <div class="txt"><div class="label">대표전화</div><div class="val">053-217-5630</div></div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="txt"><div class="label">대표전화</div><div class="val"><a href="tel:053-217-5630">053-217-5630</a></div></div>
       </div>
       <div class="contact-detail">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <div class="txt"><div class="label">이메일</div><div class="val">swchoi@sainfo.co.kr</div></div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="txt"><div class="label">이메일</div><div class="val"><a href="mailto:swchoi@sainfo.co.kr">swchoi@sainfo.co.kr</a></div></div>
       </div>
       <div class="contact-detail">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div class="txt"><div class="label">오시는 길</div><div class="val">대구광역시 서구 와룡로 307<br>디센터 1976, 608호</div></div>
       </div>
     </div>
-    <div class="contact-form reveal">
+    <form class="contact-form reveal" onsubmit="return handleSubmit(event)">
       <div class="form-row two">
-        <div><label>회사명</label><input type="text" placeholder="회사명을 입력하세요"></div>
-        <div><label>담당자명</label><input type="text" placeholder="성함을 입력하세요"></div>
+        <div><label for="cf-company">회사명</label><input id="cf-company" name="company" type="text" autocomplete="organization" placeholder="회사명을 입력하세요"></div>
+        <div><label for="cf-name">담당자명</label><input id="cf-name" name="name" type="text" autocomplete="name" placeholder="성함을 입력하세요"></div>
       </div>
       <div class="form-row two">
-        <div><label>연락처</label><input type="text" placeholder="010-0000-0000"></div>
-        <div><label>이메일</label><input type="email" placeholder="email@company.com"></div>
+        <div><label for="cf-phone">연락처</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000"></div>
+        <div><label for="cf-email">이메일</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="email@company.com"></div>
       </div>
       <div class="form-row">
-        <label>문의 내용</label>
-        <textarea placeholder="도입을 검토 중인 사업이나 궁금한 점을 자유롭게 남겨 주세요."></textarea>
+        <label for="cf-message">문의 내용</label>
+        <textarea id="cf-message" name="message" placeholder="도입을 검토 중인 사업이나 궁금한 점을 자유롭게 남겨 주세요."></textarea>
       </div>
-      <button class="btn btn-primary form-submit" onclick="handleSubmit()">문의 보내기 →</button>
+      <button type="submit" class="btn btn-primary form-submit">문의 보내기 →</button>
       <p class="form-note">* 본 시안의 문의 폼은 데모용으로, 실제 전송되지 않습니다.</p>
-    </div>
+    </form>
   </div>
 </section>
 
@@ -873,7 +924,7 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#home" class="logo"><svg class="logo-mark" viewBox="0 0 100 100"><use href="#saeam-symbol"/></svg><span class="logo-text"><span class="ko">새암<span>정보</span></span><span class="en">SAEAM INFORMATION</span></span></a>
+        <a href="#home" class="logo"><svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#saeam-symbol"/></svg><span class="logo-text"><span class="ko">새암<span>정보</span></span><span class="en">SAEAM INFORMATION</span></span></a>
         <p>제조와 공공의 디지털 혁신을 지원하는 IT 전문기업. 검증된 기술과 신뢰로 고객의 성장을 함께합니다.</p>
       </div>
       <div class="footer-cols">
@@ -891,8 +942,8 @@
         </div>
         <div class="footer-col">
           <h5>문의</h5>
-          <a href="#contact">053-217-5630</a>
-          <a href="#contact">swchoi@sainfo.co.kr</a>
+          <a href="tel:053-217-5630">053-217-5630</a>
+          <a href="mailto:swchoi@sainfo.co.kr">swchoi@sainfo.co.kr</a>
         </div>
       </div>
     </div>
@@ -910,10 +961,13 @@
   });
 
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
+    entries.forEach((e) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), (i % 4) * 80);
-        io.unobserve(e.target);
+        const el = e.target;
+        const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('reveal'));
+        const idx = siblings.indexOf(el);
+        setTimeout(() => el.classList.add('visible'), (idx % 4) * 80);
+        io.unobserve(el);
       }
     });
   }, { threshold: 0.15 });
@@ -977,8 +1031,10 @@
     if (!e.matches) setMobileNav(false);
   });
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    if (e) e.preventDefault();
     alert('문의가 접수되었습니다.\n(본 시안은 데모이며 실제로는 전송되지 않습니다.)');
+    return false;
   }
 </script>
 </body>
