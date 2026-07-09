@@ -51,6 +51,7 @@
     --clay: #0A5BA8;
     --clay-soft: #2E9BD6;
     --clay-bg: #E3F1FB;
+    --azure: #1E7FD6;
     --cyan: #41BEE8;
     --navy: #0A3A6B;
     --line: #E1EAF2;
@@ -96,8 +97,9 @@
     text-decoration: none;
   }
   .logo-mark {
-    width: 48px; height: 48px;
+    height: 40px; width: auto;
     flex-shrink: 0;
+    display: block;
   }
   .logo-text { display: flex; flex-direction: column; line-height: 1; }
   .logo-text .ko { font-size: 22px; font-weight: 800; letter-spacing: -0.8px; }
@@ -106,10 +108,10 @@
     font-size: 9.5px;
     font-weight: 600;
     letter-spacing: 2px;
-    color: var(--ink-muted);
+    color: var(--azure);
     margin-top: 3px;
   }
-  header.scrolled .logo-mark { width: 42px; height: 42px; }
+  header.scrolled .logo-mark { height: 34px; }
   nav ul { display: flex; gap: 36px; list-style: none; align-items: center; }
   nav a {
     text-decoration: none;
@@ -625,33 +627,11 @@
 </head>
 <body>
 
-<!-- Reusable logo symbol -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <linearGradient id="saeamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#5CCBEE"/>
-      <stop offset="100%" stop-color="#0A4D8C"/>
-    </linearGradient>
-    <linearGradient id="saeamGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#7DD6F0"/>
-      <stop offset="100%" stop-color="#3BA5DC"/>
-    </linearGradient>
-  </defs>
-  <symbol id="saeam-symbol" viewBox="0 0 100 100">
-    <!-- 위쪽 물방울 꼬리 (밝은 시안) -->
-    <path d="M30 16 C44 8 64 12 68 26 C70 34 64 40 55 41 C63 38 66 31 62 25 C57 17 43 16 33 22 C28 25 27 21 30 16 Z" fill="url(#saeamGradLight)"/>
-    <!-- 가운데 S 본체 (진한 네이비 그라데이션) -->
-    <path d="M64 30 C72 36 70 47 60 52 C50 57 40 56 32 64 C30 56 38 51 47 49 C56 47 60 41 56 35 C53 31 47 31 42 34 C48 28 58 26 64 30 Z" fill="url(#saeamGrad)"/>
-    <!-- 아래쪽 물방울 꼬리 (밝은 시안) -->
-    <path d="M70 60 C56 70 36 68 30 54 C27 46 33 39 43 39 C35 42 32 49 36 55 C42 64 57 64 67 57 C72 54 73 56 70 60 Z" fill="url(#saeamGradLight)"/>
-  </symbol>
-</svg>
-
 <!-- Navigation -->
 <header id="header">
   <div class="container nav-inner">
     <a href="#home" class="logo">
-      <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#saeam-symbol"/></svg>
+      <img class="logo-mark" src="assets/brand/symbol.png" alt="" width="27" height="40">
       <span class="logo-text">
         <span class="ko">새암<span>정보</span></span>
         <span class="en">SAEAM INFORMATION</span>
@@ -924,7 +904,7 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#home" class="logo"><svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#saeam-symbol"/></svg><span class="logo-text"><span class="ko">새암<span>정보</span></span><span class="en">SAEAM INFORMATION</span></span></a>
+        <a href="#home" class="logo"><img class="logo-mark" src="assets/brand/symbol-white.png" alt="" width="23" height="34"><span class="logo-text"><span class="ko">새암<span>정보</span></span><span class="en">SAEAM INFORMATION</span></span></a>
         <p>제조와 공공의 디지털 혁신을 지원하는 IT 전문기업. 검증된 기술과 신뢰로 고객의 성장을 함께합니다.</p>
       </div>
       <div class="footer-cols">
@@ -933,6 +913,7 @@
           <a href="#about">회사소개</a>
           <a href="#history">연혁</a>
           <a href="#ai">AI 역량</a>
+          <a href="ci.html">브랜드 가이드</a>
         </div>
         <div class="footer-col">
           <h5>사업</h5>

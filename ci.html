@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>브랜드 가이드 | 주식회사 새암정보</title>
+<meta name="description" content="주식회사 새암정보(SAEAM INFORMATION)의 CI 브랜드 가이드 — 심볼, 로고 락업, 컬러 팔레트, 타이포그래피 및 사용 규칙.">
+<meta name="theme-color" content="#0A5BA8">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg-card: #F4F8FC;
+    --bg-deep: #0A2647;
+    --ink: #0E2A4A;
+    --ink-soft: #3A526E;
+    --ink-muted: #5F7186;
+    --clay: #0A5BA8;
+    --azure: #1E7FD6;
+    --line: #E1EAF2;
+    --line-soft: #EDF3F8;
+    --serif: 'Georgia', 'Times New Roman', 'Nanum Myeongjo', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.65;
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 28px; }
+  a { color: var(--clay); }
+
+  /* Nav */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+  .logo img { height: 36px; width: auto; display: block; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-text .ko { font-size: 20px; font-weight: 800; letter-spacing: -0.8px; }
+  .logo-text .ko span { color: var(--clay); }
+  .logo-text .en { font-size: 8.5px; font-weight: 600; letter-spacing: 3px; color: var(--azure); margin-top: 3px; }
+  .back { font-size: 14px; font-weight: 600; color: var(--ink-soft); text-decoration: none; }
+  .back:hover { color: var(--clay); }
+
+  /* Page head */
+  .page-head { padding: 88px 0 40px; }
+  .page-head .tag { display: inline-block; color: var(--azure); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .page-head h1 { font-family: var(--serif); font-size: clamp(34px, 6vw, 56px); font-weight: 500; letter-spacing: -1.5px; line-height: 1.12; }
+  .page-head h1 em { font-style: italic; color: var(--clay); }
+  .page-head p { margin-top: 20px; max-width: 620px; color: var(--ink-soft); font-size: 17px; line-height: 1.75; }
+
+  section { padding: 44px 0; border-top: 1px solid var(--line-soft); }
+  .sec-label { font-family: var(--serif); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+  .sec-title { font-family: var(--serif); font-size: clamp(24px, 3.4vw, 34px); font-weight: 500; letter-spacing: -0.6px; margin-bottom: 10px; }
+  .sec-desc { color: var(--ink-soft); max-width: 620px; margin-bottom: 32px; line-height: 1.75; }
+
+  /* Symbol hero card */
+  .symbol-hero {
+    display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center;
+    background: var(--bg-card); border: 1px solid var(--line); border-radius: 24px; padding: 48px;
+  }
+  .symbol-hero .box { display: flex; align-items: center; justify-content: center; }
+  .symbol-hero .box img { height: 180px; width: auto; }
+  .symbol-hero h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; margin-bottom: 14px; }
+  .symbol-hero p { color: var(--ink-soft); line-height: 1.8; }
+
+  /* Variant cards */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .var-card { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .var-card .stage { height: 170px; display: flex; align-items: center; justify-content: center; }
+  .var-card .stage img { height: 104px; width: auto; }
+  .var-card .stage.light { background: var(--bg-card); }
+  .var-card .stage.dark { background: var(--bg-deep); }
+  .var-card .stage.mist { background: #EEF3F8; }
+  .var-card .meta { padding: 16px 20px; border-top: 1px solid var(--line); }
+  .var-card .meta b { font-size: 15px; }
+  .var-card .meta span { display: block; font-size: 13px; color: var(--ink-muted); margin-top: 3px; }
+
+  /* Lockup */
+  .lockup { background: var(--bg-card); border: 1px solid var(--line); border-radius: 20px; padding: 44px; display: flex; align-items: center; gap: 16px; }
+  .lockup img { height: 56px; width: auto; }
+  .lockup .lt .ko { font-size: 30px; font-weight: 800; letter-spacing: -1px; color: #0A2540; line-height: 1; }
+  .lockup .lt .ko span { color: var(--clay); }
+  .lockup .lt .en { font-size: 12px; font-weight: 600; letter-spacing: 4px; color: var(--azure); margin-top: 6px; }
+
+  /* Origin logos */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .origin { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .origin img { width: 100%; height: auto; display: block; background: #fff; }
+  .origin .cap { padding: 14px 20px; font-size: 14px; color: var(--ink-muted); border-top: 1px solid var(--line); }
+
+  /* Colors */
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .sw { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .sw .chip { height: 88px; }
+  .sw .info { padding: 12px 14px; }
+  .sw .info b { font-size: 14px; }
+  .sw .info span { display: block; font-size: 12.5px; color: var(--ink-muted); margin-top: 2px; font-variant-numeric: tabular-nums; text-transform: uppercase; }
+
+  /* Typography */
+  .type-row { display: grid; grid-template-columns: 160px 1fr; gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line-soft); align-items: baseline; }
+  .type-row:last-child { border-bottom: none; }
+  .type-row .k { color: var(--ink-muted); font-size: 14px; }
+  .type-row .k b { display: block; color: var(--ink); font-size: 16px; margin-bottom: 4px; }
+  .type-row .sample-kr { font-size: 30px; font-weight: 800; letter-spacing: -1px; color: #0A2540; }
+  .type-row .sample-en { font-size: 26px; font-weight: 600; letter-spacing: 3px; color: #0A2540; }
+  .type-row .weights { color: var(--ink-soft); font-size: 15px; margin-top: 6px; }
+
+  /* Do / Don't */
+  .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .rule { border: 1px solid var(--line); border-radius: 16px; padding: 26px 28px; }
+  .rule h4 { font-size: 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .rule.do h4 { color: #1E7FD6; }
+  .rule.dont h4 { color: #C0442E; }
+  .rule ul { list-style: none; }
+  .rule li { position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; }
+  .rule li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; }
+  .rule.do li::before { background: #1E7FD6; }
+  .rule.dont li::before { background: #C0442E; }
+
+  /* Footer */
+  footer { background: #061426; color: rgba(234,244,251,0.62); padding: 40px 0; margin-top: 40px; }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .foot-brand { display: flex; align-items: center; gap: 12px; }
+  .foot-brand img { height: 34px; width: auto; }
+  .foot-brand .ko { font-size: 18px; font-weight: 800; color: #fff; line-height: 1; }
+  .foot-brand .en { font-size: 8px; font-weight: 600; letter-spacing: 3px; color: #5AA9E0; margin-top: 4px; }
+  .foot-info { text-align: right; font-size: 12px; color: #8598AD; line-height: 1.7; }
+
+  @media (max-width: 820px) {
+    .symbol-hero { grid-template-columns: 1fr; gap: 28px; padding: 34px; }
+    .grid-3, .swatches { grid-template-columns: repeat(2, 1fr); }
+    .grid-2, .rules { grid-template-columns: 1fr; }
+    .type-row { grid-template-columns: 1fr; gap: 10px; }
+    .foot-inner { flex-direction: column; align-items: flex-start; }
+    .foot-info { text-align: left; }
+  }
+  @media (max-width: 480px) { .grid-3, .swatches { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/brand/symbol.png" alt="" width="24" height="36">
+      <span class="logo-text">
+        <span class="ko">새암<span>정보</span></span>
+        <span class="en">SAEAM INFORMATION</span>
+      </span>
+    </a>
+    <a href="index.html" class="back">← 홈으로</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="page-head">
+    <span class="tag">Brand Guide</span>
+    <h1>새암정보 <em>CI</em> 브랜드 가이드</h1>
+    <p>물이 솟아 흐르는 'S' 형태의 심볼을 중심으로, 새암정보의 로고·컬러·타이포그래피 사용 규칙을 정리했습니다. 웹·인쇄·응용물 어디에서든 일관된 브랜드 경험을 위해 아래 규격을 따라 주세요.</p>
+  </div>
+
+  <!-- Symbol -->
+  <section>
+    <div class="sec-label">Symbol</div>
+    <div class="sec-title">심볼</div>
+    <div class="symbol-hero">
+      <div class="box"><img src="assets/brand/symbol.png" alt="새암정보 심볼"></div>
+      <div>
+        <h3>샘솟는 물, 흐르는 S</h3>
+        <p>'새암'은 '샘'의 옛말입니다. 심볼은 물이 솟아 아래로 흘러내리는 움직임을 'S' 곡선으로 형상화하여, 고객의 능력이 샘솟듯 넘쳐나도록 돕는 새암정보의 미션을 담았습니다. 밝은 스카이블루에서 딥네이비로 이어지는 그라데이션은 신뢰와 기술의 흐름을 상징합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variants -->
+  <section>
+    <div class="sec-label">Symbol Variations</div>
+    <div class="sec-title">심볼 변형</div>
+    <p class="sec-desc">배경 명도에 따라 세 가지 버전을 사용합니다. 벡터(SVG) 사용을 우선하고, SVG를 쓸 수 없는 환경에서만 PNG로 폴백하세요.</p>
+    <div class="grid-3">
+      <div class="var-card">
+        <div class="stage light"><img src="assets/brand/symbol.png" alt="컬러 심볼"></div>
+        <div class="meta"><b>컬러 (기본)</b><span>밝은 배경 · symbol.svg</span></div>
+      </div>
+      <div class="var-card">
+        <div class="stage dark"><img src="assets/brand/symbol-white.png" alt="흰색 심볼"></div>
+        <div class="meta"><b>화이트</b><span>어두운 배경 · symbol-white.svg</span></div>
+      </div>
+      <div class="var-card">
+        <div class="stage mist"><img src="assets/brand/symbol-mono.svg" alt="단색 심볼"></div>
+        <div class="meta"><b>모노 (네이비)</b><span>단색 인쇄·워터마크 · symbol-mono.svg</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lockup -->
+  <section>
+    <div class="sec-label">Logo Lockup</div>
+    <div class="sec-title">로고 락업</div>
+    <p class="sec-desc">심볼과 워드마크(국문 + 영문)의 기본 조합입니다. 국문 "새암정보"와 영문 "SAEAM INFORMATION"을 세로로 스택하며, 심볼과의 간격·비율을 임의로 바꾸지 마세요.</p>
+    <div class="lockup">
+      <img src="assets/brand/symbol.png" alt="">
+      <div class="lt">
+        <div class="ko">새암<span>정보</span></div>
+        <div class="en">SAEAM INFORMATION</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Origin logos -->
+  <section>
+    <div class="sec-label">Original Wordmark</div>
+    <div class="sec-title">국문 · 영문 로고 원본</div>
+    <p class="sec-desc">회사가 보유한 원본 로고입니다. 참고용이며, 웹 반영 시에는 벡터 심볼과 워드마크 락업을 우선 사용합니다.</p>
+    <div class="grid-2">
+      <div class="origin"><img src="assets/brand/logo-kr.jpg" alt="새암정보 국문 로고"><div class="cap">국문 로고</div></div>
+      <div class="origin"><img src="assets/brand/logo-en.jpg" alt="SAEAM INFORMATION 영문 로고"><div class="cap">영문 로고</div></div>
+    </div>
+  </section>
+
+  <!-- Colors -->
+  <section>
+    <div class="sec-label">Color Palette</div>
+    <div class="sec-title">컬러 팔레트</div>
+    <p class="sec-desc">네이비 중심(Flow) 방향입니다. 딥네이비를 기반으로 Azure를 포인트 컬러로 사용합니다.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#071B3A"></div><div class="info"><b>Midnight</b><span>#071B3A</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0A2540"></div><div class="info"><b>Deep Navy</b><span>#0A2540</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0A3E86"></div><div class="info"><b>Navy</b><span>#0A3E86</span></div></div>
+      <div class="sw"><div class="chip" style="background:#1E7FD6"></div><div class="info"><b>Azure · 포인트</b><span>#1E7FD6</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0B63CE"></div><div class="info"><b>Signal Blue · CTA</b><span>#0B63CE</span></div></div>
+      <div class="sw"><div class="chip" style="background:#5CC5F2"></div><div class="info"><b>Sky</b><span>#5CC5F2</span></div></div>
+      <div class="sw"><div class="chip" style="background:#22C7E6"></div><div class="info"><b>Cyan</b><span>#22C7E6</span></div></div>
+      <div class="sw"><div class="chip" style="background:#EEF3F8;border-bottom:1px solid var(--line)"></div><div class="info"><b>Mist</b><span>#EEF3F8</span></div></div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section>
+    <div class="sec-label">Typography</div>
+    <div class="sec-title">타이포그래피</div>
+    <p class="sec-desc">국문은 <b>Pretendard</b>, 영문 라벨·워드마크는 <b>Space Grotesk</b>를 사용합니다. (본 가이드 페이지는 폴백 서체로 표시될 수 있습니다.)</p>
+    <div class="type-row">
+      <div class="k"><b>Pretendard</b>국문 본문 · 워드마크</div>
+      <div>
+        <div class="sample-kr">고객의 능력이 샘솟듯</div>
+        <div class="weights">Weight 500 · 600 · 800</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="k"><b>Space Grotesk</b>영문 라벨 · 워드마크</div>
+      <div>
+        <div class="sample-en">SAEAM INFORMATION</div>
+        <div class="weights">Weight 500 · 600 · 700</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rules -->
+  <section>
+    <div class="sec-label">Usage</div>
+    <div class="sec-title">사용 규칙</div>
+    <div class="rules">
+      <div class="rule do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>벡터(SVG) 자산을 우선 사용합니다.</li>
+          <li>심볼 주위에 충분한 여백(심볼 높이의 최소 25%)을 둡니다.</li>
+          <li>어두운 배경에는 화이트, 단색 인쇄에는 모노 버전을 사용합니다.</li>
+          <li>워드마크의 국·영문 조합과 비율을 그대로 유지합니다.</li>
+        </ul>
+      </div>
+      <div class="rule dont">
+        <h4>✕ 금지</h4>
+        <ul>
+          <li>심볼을 세로로 눌러 비율을 왜곡하지 않습니다.</li>
+          <li>지정된 팔레트 외의 색으로 심볼을 칠하지 않습니다.</li>
+          <li>대비가 낮은 배경 위에 컬러 심볼을 얹지 않습니다.</li>
+          <li>심볼과 워드마크의 간격을 임의로 바꾸지 않습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="container foot-inner">
+    <div class="foot-brand">
+      <img src="assets/brand/symbol-white.png" alt="">
+      <div>
+        <div class="ko">새암정보</div>
+        <div class="en">SAEAM INFORMATION</div>
+      </div>
+    </div>
+    <div class="foot-info">
+      대구광역시 서구 와룡로 307 디센터1976 608호 · T. 053-217-5630<br>
+      © 2026 SAEAM INFORMATION. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
