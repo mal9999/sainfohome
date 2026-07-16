@@ -86,18 +86,18 @@
 | clients.group.mfg | 제조 · 유통 | Manufacturing · Distribution |
 | clients.group.pub | 공공 · 교육 · 연구 | Public · Education · Research |
 
-**고객사명 [⚠️ 회사 공식표기 확인 후 확정 — 아래는 초안]**
-| ko | en(초안) | agy 주장(확인필요) |
+**고객사명 [공식 사이트/기업프로필 확인 완료]**
+| ko | en (확정) | 출처·비고 |
 |---|---|---|
-| 평화발레오 | Pyeonghwa Valeo | "Valeo Pyeong Hwa" 순서 주장 |
-| 평화정공 | Pyeonghwa Precision (PHC) | "2021 PHA로 사명변경, PHC=그룹명" 주장 |
-| VPH메탈 | VPH Metal | — |
-| VPHC | VPHC | — |
-| VPH | VPH | 평화발레오 약칭 중복 정리 권장 |
-| 크레택 | Cretec | "CRETEC 전부대문자" 주장 |
-| 한국교육학술정보원(KERIS) | KERIS | Korea Education & Research Information Service |
+| 평화발레오 | Valeo Pyeonghwa | 프랑스 Valeo 합작사, 공식명 Valeo Pyeonghwa Co.,Ltd. (koreavaleo.com) |
+| 평화정공 | PHA | 2021년 사명변경(phakr.com, 피에이치에이㈜) |
+| VPH메탈 | VPH Metal | 평화발레오 계열, 주물부품 (2012 설립) |
+| VPHC | VPHC | Valeo Pyeonghwa Components (2017 분사) |
+| VPH | VPH | ⚠️ 엔티티 모호(VPHI/그룹브랜드?) — 이미 라틴표기라 유지, 회사 확인 권장 |
+| 크레택 | CRETEC | 대구 공구유통, 공식 전부대문자 (cretec.kr) |
+| 한국교육학술정보원(KERIS) | KERIS | Korea Education and Research Information Service |
 | 한국산업인력공단 | HRD Korea | Human Resources Development Service of Korea |
-| 대구광역시청 | Daegu Metropolitan City | — |
+| 대구광역시청 | Daegu Metropolitan City | 공식 영문명 |
 | DGIST | DGIST | Daegu Gyeongbuk Institute of Science and Technology |
 
 ## AI — C톤
