@@ -133,6 +133,18 @@
   }
   .nav-cta:hover { background: var(--clay); transform: translateY(-1px); }
   .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .lang-toggle {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+    padding: 6px 12px; border-radius: 100px;
+    cursor: pointer; transition: all 0.2s ease;
+    font-family: var(--sans);
+  }
+  .lang-toggle:hover { border-color: var(--clay); color: var(--clay); }
+  .lang-toggle:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
 
   /* ===== Hero ===== */
   .hero {
@@ -633,23 +645,26 @@
     <a href="#home" class="logo">
       <img class="logo-mark" src="assets/brand/symbol.png" alt="" width="27" height="40">
       <span class="logo-text">
-        <span class="ko">새암<span>정보</span></span>
-        <span class="en">SAEAM INFORMATION</span>
+        <span class="ko" data-i18n="brand.name">새암<span>정보</span></span>
+        <span class="en" data-i18n="brand.tagline">SAEAM INFORMATION</span>
       </span>
     </a>
-    <nav>
-      <ul id="primary-nav">
-        <li><a href="#about">회사소개</a></li>
-        <li><a href="#business">사업영역</a></li>
-        <li><a href="#clients">고객사</a></li>
-        <li><a href="#ai">AI 역량</a></li>
-        <li><a href="#history">연혁</a></li>
-        <li><a href="#contact" class="nav-cta">문의하기</a></li>
-      </ul>
-    </nav>
-    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primary-nav">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
+    <div class="nav-right">
+      <nav>
+        <ul id="primary-nav">
+          <li><a href="#about" data-i18n="nav.about">회사소개</a></li>
+          <li><a href="#business" data-i18n="nav.business">사업영역</a></li>
+          <li><a href="#clients" data-i18n="nav.clients">고객사</a></li>
+          <li><a href="#ai" data-i18n="nav.ai">AI 역량</a></li>
+          <li><a href="#history" data-i18n="nav.history">연혁</a></li>
+          <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">문의하기</a></li>
+        </ul>
+      </nav>
+      <button class="lang-toggle" type="button" aria-label="Switch to English">EN</button>
+      <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primary-nav">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -658,12 +673,12 @@
   <div class="hero-arc"></div>
   <div class="hero-arc two"></div>
   <div class="container hero-content">
-    <div class="hero-badge"><span class="dot"></span>2014년부터 함께한 제조·공공 IT 파트너</div>
-    <h1>고객의 능력이<br><em>샘솟듯</em> 넘쳐나도록</h1>
-    <p>주식회사 새암정보는 제조업과 공공부문의 디지털 혁신을 지원하는 IT 전문기업입니다. 끊임없는 기술 혁신으로 고객에게 최상의 가치를 제공합니다.</p>
+    <div class="hero-badge"><span class="dot"></span><span data-i18n="hero.badge">2014년부터 함께한 제조·공공 IT 파트너</span></div>
+    <h1 data-i18n="hero.title">고객의 능력이<br><em>샘솟듯</em> 넘쳐나도록</h1>
+    <p data-i18n="hero.sub">주식회사 새암정보는 제조업과 공공부문의 디지털 혁신을 지원하는 IT 전문기업입니다. 끊임없는 기술 혁신으로 고객에게 최상의 가치를 제공합니다.</p>
     <div class="hero-actions">
-      <a href="#business" class="btn btn-primary">사업영역 보기 <span class="hero-arrow">→</span></a>
-      <a href="#contact" class="btn btn-ghost">문의하기</a>
+      <a href="#business" class="btn btn-primary"><span data-i18n="hero.btn.primary">사업영역 보기</span> <span class="hero-arrow">→</span></a>
+      <a href="#contact" class="btn btn-ghost" data-i18n="hero.btn.ghost">문의하기</a>
     </div>
   </div>
 </section>
@@ -673,14 +688,14 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-tag">About Saeam</span>
-      <h2>'새암'은 <em>샘</em>의 옛말입니다</h2>
-      <p>고객의 기술과 능력이 샘솟듯 넘쳐날 수 있도록, 맞춤형 IT 솔루션으로 기업의 지속 가능한 성장을 돕는 신뢰할 수 있는 파트너가 되겠습니다.</p>
+      <h2 data-i18n="about.title">'새암'은 <em>샘</em>의 옛말입니다</h2>
+      <p data-i18n="about.desc">고객의 기술과 능력이 샘솟듯 넘쳐날 수 있도록, 맞춤형 IT 솔루션으로 기업의 지속 가능한 성장을 돕는 신뢰할 수 있는 파트너가 되겠습니다.</p>
     </div>
     <div class="stats">
-      <div class="stat-card reveal"><div class="stat-num">2014</div><div class="stat-label">설립 연도</div></div>
-      <div class="stat-card reveal"><div class="stat-num" data-target="2"><span class="suffix">대</span></div><div class="stat-label">제조·공공 핵심 사업</div></div>
-      <div class="stat-card reveal"><div class="stat-num" data-target="10"><span class="suffix">+</span></div><div class="stat-label">주요 고객사</div></div>
-      <div class="stat-card reveal"><div class="stat-num" data-target="12"><span class="suffix">년+</span></div><div class="stat-label">축적된 전문성</div></div>
+      <div class="stat-card reveal"><div class="stat-num">2014</div><div class="stat-label" data-i18n="about.stat.founded">설립 연도</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="2"><span class="suffix" data-i18n="about.stat.suffix.core">대</span></div><div class="stat-label" data-i18n="about.stat.core">제조·공공 핵심 사업</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="10"><span class="suffix">+</span></div><div class="stat-label" data-i18n="about.stat.clients">주요 고객사</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="12"><span class="suffix" data-i18n="about.stat.suffix.years">년+</span></div><div class="stat-label" data-i18n="about.stat.expertise">축적된 전문성</div></div>
     </div>
 
     <div class="mv-grid">
@@ -690,9 +705,9 @@
           <h3>Mission</h3>
         </div>
         <ul class="mv-list">
-          <li>끊임없는 기술 혁신을 통해 고객에게 최상의 가치 제공</li>
-          <li>맞춤형 IT 솔루션으로 경쟁력 강화 및 비용 절감 실현</li>
-          <li>기업의 지속 가능한 성장과 운영 최적화 지원</li>
+          <li data-i18n="mv.mission.1">끊임없는 기술 혁신을 통해 고객에게 최상의 가치 제공</li>
+          <li data-i18n="mv.mission.2">맞춤형 IT 솔루션으로 경쟁력 강화 및 비용 절감 실현</li>
+          <li data-i18n="mv.mission.3">기업의 지속 가능한 성장과 운영 최적화 지원</li>
         </ul>
       </div>
       <div class="mv-card reveal">
@@ -701,10 +716,10 @@
           <h3>Vision</h3>
         </div>
         <ul class="mv-list">
-          <li>디지털 혁신을 선도하는 글로벌 IT 기업으로 성장</li>
-          <li>스마트 제조 및 공공 IT 서비스를 통한 가치 창출</li>
-          <li>데이터 기반 자동화 기술로 고객사의 운영 효율 증대</li>
-          <li>AI 및 빅데이터를 활용한 최적화된 솔루션 제공</li>
+          <li data-i18n="mv.vision.1">디지털 혁신을 선도하는 글로벌 IT 기업으로 성장</li>
+          <li data-i18n="mv.vision.2">스마트 제조 및 공공 IT 서비스를 통한 가치 창출</li>
+          <li data-i18n="mv.vision.3">데이터 기반 자동화 기술로 고객사의 운영 효율 증대</li>
+          <li data-i18n="mv.vision.4">AI 및 빅데이터를 활용한 최적화된 솔루션 제공</li>
         </ul>
       </div>
     </div>
@@ -716,32 +731,32 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-tag">Business Area</span>
-      <h2>제조와 공공을 중심으로,<br><em>영역을 넓혀가는</em> 전문성</h2>
-      <p>제조와 공공 두 핵심 축을 기반으로, 무역·물류와 연구기관 행정까지 다양한 분야의 맞춤형 솔루션을 제공합니다.</p>
+      <h2 data-i18n="biz.title">제조와 공공을 중심으로,<br><em>영역을 넓혀가는</em> 전문성</h2>
+      <p data-i18n="biz.desc">제조와 공공 두 핵심 축을 기반으로, 무역·물류와 연구기관 행정까지 다양한 분야의 맞춤형 솔루션을 제공합니다.</p>
     </div>
     <div class="biz-grid">
       <div class="biz-card reveal">
         <div class="biz-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M2 20h20M4 20V8l5 3V8l5 3V6l6 4v10"/></svg></div>
-        <h3>제조 Application</h3>
-        <p>MES와 SCM을 중심으로 생산 공정과 공급망 전반을 통합 관리하고, 구매원가·금형까지 아우르는 솔루션으로 제조 경쟁력을 높입니다.</p>
+        <h3 data-i18n="biz.mfg.title">제조 Application</h3>
+        <p data-i18n="biz.mfg.desc">MES와 SCM을 중심으로 생산 공정과 공급망 전반을 통합 관리하고, 구매원가·금형까지 아우르는 솔루션으로 제조 경쟁력을 높입니다.</p>
         <div class="biz-tags">
-          <span class="biz-tag">MES (제조실행)</span>
-          <span class="biz-tag">SCM (공급망관리)</span>
-          <span class="biz-tag">구매원가·단가 관리</span>
-          <span class="biz-tag">금형 관리</span>
-          <span class="biz-tag">생산공정 모니터링</span>
+          <span class="biz-tag" data-i18n="biz.mfg.tag.1">MES (제조실행)</span>
+          <span class="biz-tag" data-i18n="biz.mfg.tag.2">SCM (공급망관리)</span>
+          <span class="biz-tag" data-i18n="biz.mfg.tag.3">구매원가·단가 관리</span>
+          <span class="biz-tag" data-i18n="biz.mfg.tag.4">금형 관리</span>
+          <span class="biz-tag" data-i18n="biz.mfg.tag.5">생산공정 모니터링</span>
         </div>
       </div>
       <div class="biz-card reveal">
         <div class="biz-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M3 21h18M4 21V10l8-5 8 5v11M9 21v-6h6v6"/></svg></div>
-        <h3>공공 Application</h3>
-        <p>교육행정정보시스템(NEIS) 유지보수와 기능개선, 4세대 나이스 기술지원을 수행하며, 국민이 신뢰할 수 있는 안정적인 공공 서비스를 실현합니다.</p>
+        <h3 data-i18n="biz.pub.title">공공 Application</h3>
+        <p data-i18n="biz.pub.desc">교육행정정보시스템(NEIS) 유지보수와 기능개선, 4세대 나이스 기술지원을 수행하며, 국민이 신뢰할 수 있는 안정적인 공공 서비스를 실현합니다.</p>
         <div class="biz-tags">
-          <span class="biz-tag">NEIS 유지보수</span>
-          <span class="biz-tag">나이스 기능개선</span>
-          <span class="biz-tag">4세대 나이스 기술지원</span>
-          <span class="biz-tag">유치원 입학관리</span>
-          <span class="biz-tag">연구기관 행정시스템</span>
+          <span class="biz-tag" data-i18n="biz.pub.tag.1">NEIS 유지보수</span>
+          <span class="biz-tag" data-i18n="biz.pub.tag.2">나이스 기능개선</span>
+          <span class="biz-tag" data-i18n="biz.pub.tag.3">4세대 나이스 기술지원</span>
+          <span class="biz-tag" data-i18n="biz.pub.tag.4">유치원 입학관리</span>
+          <span class="biz-tag" data-i18n="biz.pub.tag.5">연구기관 행정시스템</span>
         </div>
       </div>
     </div>
@@ -749,12 +764,12 @@
     <div class="biz-extra reveal">
       <div class="biz-extra-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
       <div class="biz-extra-body">
-        <h3>기타 IT 사업</h3>
-        <p>무역·물류 관리부터 연구기관 종합행정까지, 고객의 업무 환경에 맞춘 시스템을 구축합니다.</p>
+        <h3 data-i18n="biz.etc.title">기타 IT 사업</h3>
+        <p data-i18n="biz.etc.desc">무역·물류 관리부터 연구기관 종합행정까지, 고객의 업무 환경에 맞춘 시스템을 구축합니다.</p>
       </div>
       <div class="biz-extra-tags">
-        <span class="biz-tag-light">무역·물류 관리 시스템</span>
-        <span class="biz-tag-light">연구기관 종합행정 시스템</span>
+        <span class="biz-tag-light" data-i18n="biz.etc.tag.1">무역·물류 관리 시스템</span>
+        <span class="biz-tag-light" data-i18n="biz.etc.tag.2">연구기관 종합행정 시스템</span>
       </div>
     </div>
   </div>
@@ -765,34 +780,34 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-tag">Clients</span>
-      <h2>신뢰가 만든 <em>레퍼런스</em></h2>
-      <p>제조와 공공 각 분야의 주요 고객과 함께 검증된 성과를 만들어 왔습니다.</p>
+      <h2 data-i18n="clients.title">신뢰가 만든 <em>레퍼런스</em></h2>
+      <p data-i18n="clients.desc">제조와 공공 각 분야의 주요 고객과 함께 검증된 성과를 만들어 왔습니다.</p>
     </div>
     <div class="client-groups">
       <div class="client-group reveal">
         <div class="client-group-label">
           <span class="cg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M2 20h20M4 20V8l5 3V8l5 3V6l6 4v10"/></svg></span>
-          제조 · 유통
+          <span data-i18n="clients.group.mfg">제조 · 유통</span>
         </div>
         <div class="client-logos">
-          <div class="client-chip">평화발레오</div>
-          <div class="client-chip">평화정공</div>
-          <div class="client-chip">VPH메탈</div>
-          <div class="client-chip">VPHC</div>
-          <div class="client-chip">VPH</div>
-          <div class="client-chip">크레택</div>
+          <div class="client-chip" data-i18n="clients.mfg.1">평화발레오</div>
+          <div class="client-chip" data-i18n="clients.mfg.2">평화정공</div>
+          <div class="client-chip" data-i18n="clients.mfg.3">VPH메탈</div>
+          <div class="client-chip" data-i18n="clients.mfg.4">VPHC</div>
+          <div class="client-chip" data-i18n="clients.mfg.5">VPH</div>
+          <div class="client-chip" data-i18n="clients.mfg.6">크레택</div>
         </div>
       </div>
       <div class="client-group reveal">
         <div class="client-group-label">
           <span class="cg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M3 21h18M4 21V10l8-5 8 5v11M9 21v-6h6v6"/></svg></span>
-          공공 · 교육 · 연구
+          <span data-i18n="clients.group.pub">공공 · 교육 · 연구</span>
         </div>
         <div class="client-logos">
-          <div class="client-chip">한국교육학술정보원(KERIS)</div>
-          <div class="client-chip">한국산업인력공단</div>
-          <div class="client-chip">대구광역시청</div>
-          <div class="client-chip">DGIST</div>
+          <div class="client-chip" data-i18n="clients.pub.1">한국교육학술정보원(KERIS)</div>
+          <div class="client-chip" data-i18n="clients.pub.2">한국산업인력공단</div>
+          <div class="client-chip" data-i18n="clients.pub.3">대구광역시청</div>
+          <div class="client-chip" data-i18n="clients.pub.4">DGIST</div>
         </div>
       </div>
     </div>
@@ -805,24 +820,24 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-tag" style="color:var(--clay-soft)">AI Capability</span>
-      <h2>축적된 도메인 위에<br><em>인공지능</em>을 더하다</h2>
-      <p>오랜 현장 경험에서 나온 데이터와 노하우에 AI를 결합해, 제조업과 IT 개발의 디지털 혁신을 선도합니다.</p>
+      <h2 data-i18n="ai.title">축적된 도메인 위에<br><em>인공지능</em>을 더하다</h2>
+      <p data-i18n="ai.desc">오랜 현장 경험에서 나온 데이터와 노하우에 AI를 결합해, 제조업과 IT 개발의 디지털 혁신을 선도합니다.</p>
     </div>
     <div class="ai-features">
       <div class="ai-card reveal">
         <div class="num">01</div>
-        <h4>AI 기반 생산계획·재고관리</h4>
-        <p>예측 모델을 활용해 생산 일정을 자동으로 생성하고, 스마트 재고관리로 제조 현장의 운영 효율을 끌어올립니다.</p>
+        <h4 data-i18n="ai.card.1.title">AI 기반 생산계획·재고관리</h4>
+        <p data-i18n="ai.card.1.desc">예측 모델을 활용해 생산 일정을 자동으로 생성하고, 스마트 재고관리로 제조 현장의 운영 효율을 끌어올립니다.</p>
       </div>
       <div class="ai-card reveal">
         <div class="num">02</div>
-        <h4>AI를 활용한 개발 혁신</h4>
-        <p>코딩 자동화와 지능형 오류 감지·수정으로 소프트웨어 개발 생산성을 높이고 품질을 향상시킵니다.</p>
+        <h4 data-i18n="ai.card.2.title">AI를 활용한 개발 혁신</h4>
+        <p data-i18n="ai.card.2.desc">코딩 자동화와 지능형 오류 감지·수정으로 소프트웨어 개발 생산성을 높이고 품질을 향상시킵니다.</p>
       </div>
       <div class="ai-card reveal">
         <div class="num">03</div>
-        <h4>데이터 마이닝·최적화</h4>
-        <p>AI와 빅데이터 기술을 접목해 데이터 기반의 최적화된 솔루션을 제공하고 스마트한 운영을 지원합니다.</p>
+        <h4 data-i18n="ai.card.3.title">데이터 마이닝·최적화</h4>
+        <p data-i18n="ai.card.3.desc">AI와 빅데이터 기술을 접목해 데이터 기반의 최적화된 솔루션을 제공하고 스마트한 운영을 지원합니다.</p>
       </div>
     </div>
   </div>
@@ -833,29 +848,29 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-tag">History</span>
-      <h2>성장의 <em>발자취</em></h2>
-      <p>한 걸음씩 쌓아온 기술과 신뢰의 기록입니다.</p>
+      <h2 data-i18n="history.title">성장의 <em>발자취</em></h2>
+      <p data-i18n="history.desc">한 걸음씩 쌓아온 기술과 신뢰의 기록입니다.</p>
     </div>
     <div class="timeline">
       <div class="tl-item reveal">
         <div class="tl-year">2025</div>
-        <div class="tl-body"><h4>AI 사업본부 신설</h4><p>제조·공공 특화 AI 솔루션 개발 전담 조직을 출범하고 본격적인 AI 전환에 착수했습니다.</p></div>
+        <div class="tl-body"><h4 data-i18n="history.2025.title">AI 사업본부 신설</h4><p data-i18n="history.2025.desc">제조·공공 특화 AI 솔루션 개발 전담 조직을 출범하고 본격적인 AI 전환에 착수했습니다.</p></div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">2020</div>
-        <div class="tl-body"><h4>디센터 1976으로 사옥 이전</h4><p>창업보육센터에서의 6년을 마무리하고 대구 디센터 1976에 새 둥지를 틀며 한 단계 도약했습니다.</p></div>
+        <div class="tl-body"><h4 data-i18n="history.2020.title">디센터 1976으로 사옥 이전</h4><p data-i18n="history.2020.desc">창업보육센터에서의 6년을 마무리하고 대구 디센터 1976에 새 둥지를 틀며 한 단계 도약했습니다.</p></div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">2018</div>
-        <div class="tl-body"><h4>VPH메탈 MES 구축</h4><p>제조 현장 MES 구축 프로젝트를 수행하며 제조 IT 역량을 본격적으로 확장했습니다.</p></div>
+        <div class="tl-body"><h4 data-i18n="history.2018.title">VPH메탈 MES 구축</h4><p data-i18n="history.2018.desc">제조 현장 MES 구축 프로젝트를 수행하며 제조 IT 역량을 본격적으로 확장했습니다.</p></div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">2016</div>
-        <div class="tl-body"><h4>한국교육학술정보원 사업 수행</h4><p>교육 분야 공공 정보화 프로젝트를 수행하며 공공 사업 영역을 한층 넓혔습니다.</p></div>
+        <div class="tl-body"><h4 data-i18n="history.2016.title">한국교육학술정보원 사업 수행</h4><p data-i18n="history.2016.desc">교육 분야 공공 정보화 프로젝트를 수행하며 공공 사업 영역을 한층 넓혔습니다.</p></div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">2014</div>
-        <div class="tl-body"><h4>주식회사 새암정보 설립</h4><p>영남이공대학교 창업보육센터에서 출발해, 한국산업인력공단 공공 프로젝트와 제조 SCM·MES 구축으로 공공·제조 두 분야에 동시에 첫발을 내디뎠습니다.</p></div>
+        <div class="tl-body"><h4 data-i18n="history.2014.title">주식회사 새암정보 설립</h4><p data-i18n="history.2014.desc">영남이공대학교 창업보육센터에서 출발해, 한국산업인력공단 공공 프로젝트와 제조 SCM·MES 구축으로 공공·제조 두 분야에 동시에 첫발을 내디뎠습니다.</p></div>
       </div>
     </div>
   </div>
@@ -865,36 +880,36 @@
 <section class="contact" id="contact">
   <div class="container contact-wrap">
     <div class="contact-info reveal">
-      <h2>디지털 전환,<br><em>새암정보</em>와 시작하세요</h2>
-      <p>도입 상담부터 기술 컨설팅까지, 궁금한 점을 남겨 주시면 담당자가 빠르게 연락드리겠습니다.</p>
+      <h2 data-i18n="contact.title">디지털 전환,<br><em>새암정보</em>와 시작하세요</h2>
+      <p data-i18n="contact.desc">도입 상담부터 기술 컨설팅까지, 궁금한 점을 남겨 주시면 담당자가 빠르게 연락드리겠습니다.</p>
       <div class="contact-detail">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-        <div class="txt"><div class="label">대표전화</div><div class="val"><a href="tel:053-217-5630">053-217-5630</a></div></div>
+        <div class="txt"><div class="label" data-i18n="contact.label.phone">대표전화</div><div class="val"><a href="tel:053-217-5630">053-217-5630</a></div></div>
       </div>
       <div class="contact-detail">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <div class="txt"><div class="label">이메일</div><div class="val"><a href="mailto:swchoi@sainfo.co.kr">swchoi@sainfo.co.kr</a></div></div>
+        <div class="txt"><div class="label" data-i18n="contact.label.email">이메일</div><div class="val"><a href="mailto:swchoi@sainfo.co.kr">swchoi@sainfo.co.kr</a></div></div>
       </div>
       <div class="contact-detail">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="txt"><div class="label">오시는 길</div><div class="val">대구광역시 서구 와룡로 307<br>디센터 1976, 608호</div></div>
+        <div class="txt"><div class="label" data-i18n="contact.label.visit">오시는 길</div><div class="val" data-i18n="contact.address">대구광역시 서구 와룡로 307<br>디센터 1976, 608호</div></div>
       </div>
     </div>
     <form class="contact-form reveal" onsubmit="return handleSubmit(event)">
       <div class="form-row two">
-        <div><label for="cf-company">회사명</label><input id="cf-company" name="company" type="text" autocomplete="organization" placeholder="회사명을 입력하세요"></div>
-        <div><label for="cf-name">담당자명</label><input id="cf-name" name="name" type="text" autocomplete="name" placeholder="성함을 입력하세요"></div>
+        <div><label for="cf-company" data-i18n="contact.form.company">회사명</label><input id="cf-company" name="company" type="text" autocomplete="organization" data-i18n="contact.form.ph.company" data-i18n-attr="placeholder" placeholder="회사명을 입력하세요"></div>
+        <div><label for="cf-name" data-i18n="contact.form.name">담당자명</label><input id="cf-name" name="name" type="text" autocomplete="name" data-i18n="contact.form.ph.name" data-i18n-attr="placeholder" placeholder="성함을 입력하세요"></div>
       </div>
       <div class="form-row two">
-        <div><label for="cf-phone">연락처</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000"></div>
-        <div><label for="cf-email">이메일</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="email@company.com"></div>
+        <div><label for="cf-phone" data-i18n="contact.form.phone">연락처</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000"></div>
+        <div><label for="cf-email" data-i18n="contact.form.email">이메일</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="email@company.com"></div>
       </div>
       <div class="form-row">
-        <label for="cf-message">문의 내용</label>
-        <textarea id="cf-message" name="message" placeholder="도입을 검토 중인 사업이나 궁금한 점을 자유롭게 남겨 주세요."></textarea>
+        <label for="cf-message" data-i18n="contact.form.message">문의 내용</label>
+        <textarea id="cf-message" name="message" data-i18n="contact.form.ph.message" data-i18n-attr="placeholder" placeholder="도입을 검토 중인 사업이나 궁금한 점을 자유롭게 남겨 주세요."></textarea>
       </div>
-      <button type="submit" class="btn btn-primary form-submit">문의 보내기 →</button>
-      <p class="form-note">* 본 시안의 문의 폼은 데모용으로, 실제 전송되지 않습니다.</p>
+      <button type="submit" class="btn btn-primary form-submit" data-i18n="contact.form.submit">문의 보내기 →</button>
+      <p class="form-note" data-i18n="contact.form.note">* 본 시안의 문의 폼은 데모용으로, 실제 전송되지 않습니다.</p>
     </form>
   </div>
 </section>
@@ -904,38 +919,164 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#home" class="logo"><img class="logo-mark" src="assets/brand/symbol-white.png" alt="" width="23" height="34"><span class="logo-text"><span class="ko">새암<span>정보</span></span><span class="en">SAEAM INFORMATION</span></span></a>
-        <p>제조와 공공의 디지털 혁신을 지원하는 IT 전문기업. 검증된 기술과 신뢰로 고객의 성장을 함께합니다.</p>
+        <a href="#home" class="logo"><img class="logo-mark" src="assets/brand/symbol-white.png" alt="" width="23" height="34"><span class="logo-text"><span class="ko" data-i18n="brand.name">새암<span>정보</span></span><span class="en" data-i18n="brand.tagline">SAEAM INFORMATION</span></span></a>
+        <p data-i18n="footer.intro">제조와 공공의 디지털 혁신을 지원하는 IT 전문기업. 검증된 기술과 신뢰로 고객의 성장을 함께합니다.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h5>회사</h5>
-          <a href="#about">회사소개</a>
-          <a href="#history">연혁</a>
-          <a href="#ai">AI 역량</a>
-          <a href="ci.html">브랜드 가이드</a>
+          <h5 data-i18n="footer.col.company">회사</h5>
+          <a href="#about" data-i18n="nav.about">회사소개</a>
+          <a href="#history" data-i18n="nav.history">연혁</a>
+          <a href="#ai" data-i18n="nav.ai">AI 역량</a>
+          <a href="ci.html" data-i18n="footer.link.brand">브랜드 가이드</a>
         </div>
         <div class="footer-col">
-          <h5>사업</h5>
-          <a href="#business">제조 솔루션</a>
-          <a href="#business">공공 솔루션</a>
-          <a href="#clients">고객사</a>
+          <h5 data-i18n="footer.col.business">사업</h5>
+          <a href="#business" data-i18n="footer.link.mfg">제조 솔루션</a>
+          <a href="#business" data-i18n="footer.link.pub">공공 솔루션</a>
+          <a href="#clients" data-i18n="nav.clients">고객사</a>
         </div>
         <div class="footer-col">
-          <h5>문의</h5>
+          <h5 data-i18n="footer.col.contact">문의</h5>
           <a href="tel:053-217-5630">053-217-5630</a>
           <a href="mailto:swchoi@sainfo.co.kr">swchoi@sainfo.co.kr</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© 2026 주식회사 새암정보. All rights reserved.</div>
-      <div>대구광역시 서구 와룡로 307 디센터 1976 608호</div>
+      <div data-i18n="footer.copyright">© 2026 주식회사 새암정보. All rights reserved.</div>
+      <div data-i18n="footer.address">대구광역시 서구 와룡로 307 디센터 1976 608호</div>
     </div>
   </div>
 </footer>
 
 <script>
+  /* ===== i18n (ko / en) — 원본 소스: i18n-copy.md ===== */
+  const I18N = {
+    ko: {
+      "nav.about":"회사소개","nav.business":"사업영역","nav.clients":"고객사","nav.ai":"AI 역량","nav.history":"연혁","nav.contact":"문의하기",
+      "brand.name":"새암<span>정보</span>","brand.tagline":"SAEAM INFORMATION",
+      "hero.badge":"2014년부터 함께한 제조·공공 IT 파트너",
+      "hero.title":"고객의 능력이<br><em>샘솟듯</em> 넘쳐나도록",
+      "hero.sub":"주식회사 새암정보는 제조업과 공공부문의 디지털 혁신을 지원하는 IT 전문기업입니다. 끊임없는 기술 혁신으로 고객에게 최상의 가치를 제공합니다.",
+      "hero.btn.primary":"사업영역 보기","hero.btn.ghost":"문의하기",
+      "about.title":"'새암'은 <em>샘</em>의 옛말입니다",
+      "about.desc":"고객의 기술과 능력이 샘솟듯 넘쳐날 수 있도록, 맞춤형 IT 솔루션으로 기업의 지속 가능한 성장을 돕는 신뢰할 수 있는 파트너가 되겠습니다.",
+      "about.stat.founded":"설립 연도","about.stat.suffix.core":"대","about.stat.core":"제조·공공 핵심 사업","about.stat.clients":"주요 고객사","about.stat.suffix.years":"년+","about.stat.expertise":"축적된 전문성",
+      "mv.mission.1":"끊임없는 기술 혁신을 통해 고객에게 최상의 가치 제공","mv.mission.2":"맞춤형 IT 솔루션으로 경쟁력 강화 및 비용 절감 실현","mv.mission.3":"기업의 지속 가능한 성장과 운영 최적화 지원",
+      "mv.vision.1":"디지털 혁신을 선도하는 글로벌 IT 기업으로 성장","mv.vision.2":"스마트 제조 및 공공 IT 서비스를 통한 가치 창출","mv.vision.3":"데이터 기반 자동화 기술로 고객사의 운영 효율 증대","mv.vision.4":"AI 및 빅데이터를 활용한 최적화된 솔루션 제공",
+      "biz.title":"제조와 공공을 중심으로,<br><em>영역을 넓혀가는</em> 전문성",
+      "biz.desc":"제조와 공공 두 핵심 축을 기반으로, 무역·물류와 연구기관 행정까지 다양한 분야의 맞춤형 솔루션을 제공합니다.",
+      "biz.mfg.title":"제조 Application","biz.mfg.desc":"MES와 SCM을 중심으로 생산 공정과 공급망 전반을 통합 관리하고, 구매원가·금형까지 아우르는 솔루션으로 제조 경쟁력을 높입니다.",
+      "biz.mfg.tag.1":"MES (제조실행)","biz.mfg.tag.2":"SCM (공급망관리)","biz.mfg.tag.3":"구매원가·단가 관리","biz.mfg.tag.4":"금형 관리","biz.mfg.tag.5":"생산공정 모니터링",
+      "biz.pub.title":"공공 Application","biz.pub.desc":"교육행정정보시스템(NEIS) 유지보수와 기능개선, 4세대 나이스 기술지원을 수행하며, 국민이 신뢰할 수 있는 안정적인 공공 서비스를 실현합니다.",
+      "biz.pub.tag.1":"NEIS 유지보수","biz.pub.tag.2":"나이스 기능개선","biz.pub.tag.3":"4세대 나이스 기술지원","biz.pub.tag.4":"유치원 입학관리","biz.pub.tag.5":"연구기관 행정시스템",
+      "biz.etc.title":"기타 IT 사업","biz.etc.desc":"무역·물류 관리부터 연구기관 종합행정까지, 고객의 업무 환경에 맞춘 시스템을 구축합니다.",
+      "biz.etc.tag.1":"무역·물류 관리 시스템","biz.etc.tag.2":"연구기관 종합행정 시스템",
+      "clients.title":"신뢰가 만든 <em>레퍼런스</em>","clients.desc":"제조와 공공 각 분야의 주요 고객과 함께 검증된 성과를 만들어 왔습니다.",
+      "clients.group.mfg":"제조 · 유통","clients.group.pub":"공공 · 교육 · 연구",
+      "clients.mfg.1":"평화발레오","clients.mfg.2":"평화정공","clients.mfg.3":"VPH메탈","clients.mfg.4":"VPHC","clients.mfg.5":"VPH","clients.mfg.6":"크레택",
+      "clients.pub.1":"한국교육학술정보원(KERIS)","clients.pub.2":"한국산업인력공단","clients.pub.3":"대구광역시청","clients.pub.4":"DGIST",
+      "ai.title":"축적된 도메인 위에<br><em>인공지능</em>을 더하다","ai.desc":"오랜 현장 경험에서 나온 데이터와 노하우에 AI를 결합해, 제조업과 IT 개발의 디지털 혁신을 선도합니다.",
+      "ai.card.1.title":"AI 기반 생산계획·재고관리","ai.card.1.desc":"예측 모델을 활용해 생산 일정을 자동으로 생성하고, 스마트 재고관리로 제조 현장의 운영 효율을 끌어올립니다.",
+      "ai.card.2.title":"AI를 활용한 개발 혁신","ai.card.2.desc":"코딩 자동화와 지능형 오류 감지·수정으로 소프트웨어 개발 생산성을 높이고 품질을 향상시킵니다.",
+      "ai.card.3.title":"데이터 마이닝·최적화","ai.card.3.desc":"AI와 빅데이터 기술을 접목해 데이터 기반의 최적화된 솔루션을 제공하고 스마트한 운영을 지원합니다.",
+      "history.title":"성장의 <em>발자취</em>","history.desc":"한 걸음씩 쌓아온 기술과 신뢰의 기록입니다.",
+      "history.2025.title":"AI 사업본부 신설","history.2025.desc":"제조·공공 특화 AI 솔루션 개발 전담 조직을 출범하고 본격적인 AI 전환에 착수했습니다.",
+      "history.2020.title":"디센터 1976으로 사옥 이전","history.2020.desc":"창업보육센터에서의 6년을 마무리하고 대구 디센터 1976에 새 둥지를 틀며 한 단계 도약했습니다.",
+      "history.2018.title":"VPH메탈 MES 구축","history.2018.desc":"제조 현장 MES 구축 프로젝트를 수행하며 제조 IT 역량을 본격적으로 확장했습니다.",
+      "history.2016.title":"한국교육학술정보원 사업 수행","history.2016.desc":"교육 분야 공공 정보화 프로젝트를 수행하며 공공 사업 영역을 한층 넓혔습니다.",
+      "history.2014.title":"주식회사 새암정보 설립","history.2014.desc":"영남이공대학교 창업보육센터에서 출발해, 한국산업인력공단 공공 프로젝트와 제조 SCM·MES 구축으로 공공·제조 두 분야에 동시에 첫발을 내디뎠습니다.",
+      "contact.title":"디지털 전환,<br><em>새암정보</em>와 시작하세요","contact.desc":"도입 상담부터 기술 컨설팅까지, 궁금한 점을 남겨 주시면 담당자가 빠르게 연락드리겠습니다.",
+      "contact.label.phone":"대표전화","contact.label.email":"이메일","contact.label.visit":"오시는 길",
+      "contact.address":"대구광역시 서구 와룡로 307<br>디센터 1976, 608호",
+      "contact.form.company":"회사명","contact.form.name":"담당자명","contact.form.phone":"연락처","contact.form.email":"이메일","contact.form.message":"문의 내용",
+      "contact.form.ph.company":"회사명을 입력하세요","contact.form.ph.name":"성함을 입력하세요","contact.form.ph.message":"도입을 검토 중인 사업이나 궁금한 점을 자유롭게 남겨 주세요.",
+      "contact.form.submit":"문의 보내기 →","contact.form.note":"* 본 시안의 문의 폼은 데모용으로, 실제 전송되지 않습니다.",
+      "contact.alert":"문의가 접수되었습니다.\n(본 시안은 데모이며 실제로는 전송되지 않습니다.)",
+      "footer.intro":"제조와 공공의 디지털 혁신을 지원하는 IT 전문기업. 검증된 기술과 신뢰로 고객의 성장을 함께합니다.",
+      "footer.col.company":"회사","footer.col.business":"사업","footer.col.contact":"문의",
+      "footer.link.brand":"브랜드 가이드","footer.link.mfg":"제조 솔루션","footer.link.pub":"공공 솔루션",
+      "footer.copyright":"© 2026 주식회사 새암정보. All rights reserved.","footer.address":"대구광역시 서구 와룡로 307 디센터 1976 608호"
+    },
+    en: {
+      "nav.about":"About","nav.business":"Business","nav.clients":"Clients","nav.ai":"AI","nav.history":"History","nav.contact":"Contact",
+      "brand.name":"SAEAM","brand.tagline":"INFORMATION",
+      "hero.badge":"Your manufacturing & public-sector IT partner since 2014",
+      "hero.title":"Where Technology Wells Up,<br><em>Capabilities Overflow</em>",
+      "hero.sub":"SAEAM Information advances digital transformation across manufacturing and the public sector, delivering the highest value through relentless innovation.",
+      "hero.btn.primary":"Explore our work","hero.btn.ghost":"Get in touch",
+      "about.title":"'Saeam' means a <em>wellspring</em>",
+      "about.desc":"Just as a spring never runs dry, we help your technology and capabilities well up and overflow — a trusted partner for sustainable growth, powered by tailored IT solutions.",
+      "about.stat.founded":"Founded","about.stat.suffix.core":"","about.stat.core":"Core business areas","about.stat.clients":"Key clients","about.stat.suffix.years":"+","about.stat.expertise":"Years of Expertise",
+      "mv.mission.1":"Deliver the highest value through relentless technical innovation","mv.mission.2":"Strengthen competitiveness and cut costs with tailored IT solutions","mv.mission.3":"Support sustainable growth and optimized operations",
+      "mv.vision.1":"Grow into a global IT company leading digital innovation","mv.vision.2":"Create value through smart manufacturing and public-sector IT","mv.vision.3":"Boost clients' efficiency with data-driven automation","mv.vision.4":"Deliver optimized solutions powered by AI and big data",
+      "biz.title":"Built on manufacturing and public services,<br><em>reaching</em> ever further",
+      "biz.desc":"Grounded in our two pillars — manufacturing and the public sector — we deliver tailored solutions across fields from trade and logistics to research-institute administration.",
+      "biz.mfg.title":"Manufacturing Applications","biz.mfg.desc":"Centered on MES and SCM, we integrate production and the full supply chain — extending to purchasing-cost and mold management — to sharpen manufacturing competitiveness.",
+      "biz.mfg.tag.1":"MES (Manufacturing Execution System)","biz.mfg.tag.2":"SCM (Supply Chain Management)","biz.mfg.tag.3":"Purchasing Cost & Pricing","biz.mfg.tag.4":"Mold Management","biz.mfg.tag.5":"Production Monitoring",
+      "biz.pub.title":"Public-Sector Applications","biz.pub.desc":"We maintain and enhance the National Education Information System (NEIS) and provide 4th-generation NEIS technical support, delivering stable public services people can trust.",
+      "biz.pub.tag.1":"NEIS Maintenance","biz.pub.tag.2":"NEIS Enhancements","biz.pub.tag.3":"4th-Gen NEIS Support","biz.pub.tag.4":"Kindergarten Admissions Systems","biz.pub.tag.5":"Research-Institute Admin Systems",
+      "biz.etc.title":"Other IT Services","biz.etc.desc":"From trade and logistics to integrated research-institute administration, we build systems tailored to each client's environment.",
+      "biz.etc.tag.1":"Trade & Logistics Systems","biz.etc.tag.2":"Research-Institute Admin Systems",
+      "clients.title":"A record built on <em>trust</em>","clients.desc":"We've delivered proven results alongside leading clients across manufacturing and the public sector.",
+      "clients.group.mfg":"Manufacturing · Distribution","clients.group.pub":"Public · Education · Research",
+      "clients.mfg.1":"Pyeonghwa Valeo","clients.mfg.2":"Pyeonghwa Precision (PHC)","clients.mfg.3":"VPH Metal","clients.mfg.4":"VPHC","clients.mfg.5":"VPH","clients.mfg.6":"Cretec",
+      "clients.pub.1":"KERIS","clients.pub.2":"HRD Korea","clients.pub.3":"Daegu Metropolitan City","clients.pub.4":"DGIST",
+      "ai.title":"Layering <em>AI</em> onto<br>deep domain expertise","ai.desc":"By pairing AI with years of on-the-ground experience — our field data and domain expertise — we lead digital innovation in manufacturing and software development.",
+      "ai.card.1.title":"AI-Driven Production Planning & Inventory","ai.card.1.desc":"Predictive models generate production schedules automatically, while smart inventory management enhances shop-floor efficiency.",
+      "ai.card.2.title":"AI-Powered Development","ai.card.2.desc":"Automated coding and intelligent error detection boost both the productivity and quality of software development.",
+      "ai.card.3.title":"Data Mining & Optimization","ai.card.3.desc":"We fuse AI with big-data techniques to deliver data-driven, optimized solutions and smarter operations.",
+      "history.title":"Milestones of <em>growth</em>","history.desc":"A record of technology and trust, built one step at a time.",
+      "history.2025.title":"AI Business Division launched","history.2025.desc":"Established a dedicated team for manufacturing- and public-sector AI solutions, beginning a full-scale AI transition.",
+      "history.2020.title":"Moved to D-Center 1976","history.2020.desc":"After six years at the startup incubator, we relocated to D-Center 1976 in Daegu and scaled our operations.",
+      "history.2018.title":"VPH Metal MES delivered","history.2018.desc":"Completed a shop-floor MES project, substantially expanding our manufacturing IT capability.",
+      "history.2016.title":"KERIS project delivered","history.2016.desc":"Carried out a public educational IT project, broadening our public-sector footprint.",
+      "history.2014.title":"SAEAM Information founded","history.2014.desc":"From the Yeungnam University College startup incubator, we launched concurrent projects in both the public and manufacturing sectors — a HRD Korea public project and manufacturing SCM·MES builds.",
+      "contact.title":"Start your digital transformation<br>with <em>SAEAM</em>","contact.desc":"From adoption consulting to technical guidance — reach out and our team will reply promptly.",
+      "contact.label.phone":"Phone","contact.label.email":"Email","contact.label.visit":"Visit us",
+      "contact.address":"Room 608, D-Center 1976,<br>307 Waryong-ro, Seo-gu, Daegu",
+      "contact.form.company":"Company","contact.form.name":"Name","contact.form.phone":"Phone","contact.form.email":"Email","contact.form.message":"Message",
+      "contact.form.ph.company":"Your company","contact.form.ph.name":"Your name","contact.form.ph.message":"Tell us about the project you're considering, or any questions you have.",
+      "contact.form.submit":"Send message →","contact.form.note":"* This form is a demo and does not actually send.",
+      "contact.alert":"Thanks — your inquiry has been received.\n(This is a demo and is not actually sent.)",
+      "footer.intro":"An IT specialist driving digital innovation in manufacturing and the public sector — growing alongside our clients on proven technology and trust.",
+      "footer.col.company":"Company","footer.col.business":"Business","footer.col.contact":"Contact",
+      "footer.link.brand":"Brand Guide","footer.link.mfg":"Manufacturing","footer.link.pub":"Public Sector",
+      "footer.copyright":"© 2026 SAEAM Information Co., Ltd. All rights reserved.","footer.address":"Room 608, D-Center 1976, 307 Waryong-ro, Seo-gu, Daegu"
+    }
+  };
+  const I18N_TITLE = { ko: "주식회사 새암정보 | 제조·공공 IT 전문기업", en: "SAEAM Information — Manufacturing & Public-Sector IT Specialist" };
+
+  function applyI18n(lang) {
+    const dict = I18N[lang] || I18N.ko;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const val = dict[el.getAttribute('data-i18n')];
+      if (val == null) return; // 키 누락 시 기존(ko) 텍스트 유지
+      const attr = el.getAttribute('data-i18n-attr');
+      if (attr) el.setAttribute(attr, val);
+      else el.innerHTML = val;
+    });
+    document.documentElement.lang = lang;
+    document.title = I18N_TITLE[lang] || I18N_TITLE.ko;
+    const t = document.querySelector('.lang-toggle');
+    if (t) {
+      t.textContent = lang === 'ko' ? 'EN' : 'KO';
+      t.setAttribute('aria-label', lang === 'ko' ? 'Switch to English' : '한국어로 전환');
+    }
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  (function initI18n() {
+    let saved = 'ko';
+    try { saved = localStorage.getItem('lang') || 'ko'; } catch (e) {}
+    const btn = document.querySelector('.lang-toggle');
+    if (btn) btn.addEventListener('click', () => {
+      applyI18n(document.documentElement.lang === 'en' ? 'ko' : 'en');
+    });
+    applyI18n(saved === 'en' ? 'en' : 'ko');
+  })();
+
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 40);
@@ -1014,7 +1155,8 @@
 
   function handleSubmit(e) {
     if (e) e.preventDefault();
-    alert('문의가 접수되었습니다.\n(본 시안은 데모이며 실제로는 전송되지 않습니다.)');
+    const lang = document.documentElement.lang === 'en' ? 'en' : 'ko';
+    alert(I18N[lang]['contact.alert']);
     return false;
   }
 </script>
