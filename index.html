@@ -8,6 +8,10 @@
 <meta name="theme-color" content="#0A5BA8">
 <link rel="canonical" href="https://www.sainfo.co.kr/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- 국문 세리프 헤드라인용 웹폰트 (라틴은 Georgia 유지) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap">
 <!-- Open Graph / SNS 공유 -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="주식회사 새암정보">
@@ -56,7 +60,9 @@
     --navy: #0A3A6B;
     --line: #E1EAF2;
     --line-soft: #EDF3F8;
-    --serif: 'Georgia', 'Times New Roman', 'Nanum Myeongjo', serif;
+    --danger: #B91C1C;
+    --success: #15803D;
+    --serif: 'Georgia', 'Times New Roman', 'Noto Serif KR', 'Nanum Myeongjo', serif;
     --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   }
 
@@ -71,6 +77,30 @@
     -webkit-font-smoothing: antialiased;
   }
   .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* ===== Accessibility base ===== */
+  /* 개별 규칙이 이겨야 하므로 :where()로 특이도를 0으로 낮춘 기본값 */
+  :where(a, button, input, textarea, [tabindex]):focus-visible {
+    outline: 3px solid var(--clay);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .ai-section :focus-visible, footer :focus-visible { outline-color: var(--cyan); }
+  main:focus { outline: none; }
+  .skip-link {
+    position: absolute;
+    top: -120px; left: 16px;
+    z-index: 1100;
+    padding: 13px 22px;
+    background: var(--clay);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 12px 12px;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus { top: 0; }
 
   /* ===== Navigation ===== */
   header {
@@ -105,10 +135,10 @@
   .logo-text .ko { font-size: 22px; font-weight: 800; letter-spacing: -0.8px; }
   .logo-text .ko span { color: var(--clay); }
   .logo-text .en {
-    font-size: 9.5px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 2px;
-    color: var(--azure);
+    letter-spacing: 1.6px;
+    color: var(--clay);
     margin-top: 3px;
   }
   header.scrolled .logo-mark { height: 34px; }
@@ -121,6 +151,17 @@
     transition: color 0.2s ease;
   }
   nav a:hover { color: var(--clay); }
+  nav a:not(.nav-cta) { position: relative; }
+  nav a.is-active:not(.nav-cta) { color: var(--clay); }
+  /* 밑줄은 ::after로 — font-weight를 바꾸면 메뉴가 밀려 레이아웃이 흔들린다 */
+  nav a.is-active:not(.nav-cta)::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -7px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--clay);
+  }
   nav a:focus-visible { outline: 2px solid var(--clay); outline-offset: 4px; border-radius: 4px; }
   .menu-toggle:focus-visible { outline: 2px solid var(--clay); outline-offset: 4px; border-radius: 8px; }
   .nav-cta {
@@ -132,7 +173,13 @@
     transition: all 0.25s ease;
   }
   .nav-cta:hover { background: var(--clay); transform: translateY(-1px); }
-  .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+  /* padding 9px + svg 26px = 44px 터치 타깃 */
+  .menu-toggle {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    padding: 9px; border-radius: 10px;
+    color: var(--ink);
+  }
   .nav-right { display: flex; align-items: center; gap: 18px; }
   .lang-toggle {
     background: none;
@@ -142,6 +189,11 @@
     padding: 6px 12px; border-radius: 100px;
     cursor: pointer; transition: all 0.2s ease;
     font-family: var(--sans);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  /* 데스크톱 포인터는 WCAG 2.2 기준 24px면 충분 — 터치 기기에서만 44px로 키운다 */
+  @media (pointer: coarse) {
+    .lang-toggle { min-height: 44px; min-width: 44px; padding: 6px 14px; }
   }
   .lang-toggle:hover { border-color: var(--clay); color: var(--clay); }
   .lang-toggle:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
@@ -149,6 +201,7 @@
   /* ===== Hero ===== */
   .hero {
     min-height: 100vh;
+    min-height: 100dvh; /* 모바일 주소창 높이 변화 대응 (미지원 시 위 100vh 사용) */
     display: flex;
     align-items: center;
     position: relative;
@@ -430,6 +483,7 @@
   }
   .cg-icon svg { width: 20px; height: 20px; stroke: var(--clay); }
   .client-logos { display: flex; flex-wrap: wrap; gap: 11px; }
+  /* 링크가 아니므로 hover 반응 없음 — 클릭 가능한 것처럼 보이지 않게 한다 */
   .client-chip {
     padding: 12px 20px;
     background: var(--bg);
@@ -438,9 +492,7 @@
     font-size: 15px;
     font-weight: 500;
     color: var(--ink-soft);
-    transition: all 0.25s ease;
   }
-  .client-chip:hover { border-color: var(--clay); color: var(--clay); }
 
   /* ===== AI Capability ===== */
   .ai-section { background: var(--bg-deep); position: relative; overflow: hidden; }
@@ -458,7 +510,7 @@
   }
   .ai-card:hover { background: rgba(65,190,232,0.1); border-color: rgba(65,190,232,0.4); transform: translateY(-5px); }
   .ai-card .num { font-family: var(--serif); font-size: 30px; color: var(--cyan); margin-bottom: 18px; }
-  .ai-card h4 { color: #EAF4FB; font-family: var(--serif); font-size: 21px; font-weight: 500; margin-bottom: 12px; }
+  .ai-card h3 { color: #EAF4FB; font-family: var(--serif); font-size: 21px; font-weight: 500; margin-bottom: 12px; }
   .ai-card p { color: rgba(234,244,251,0.6); font-size: 14.5px; line-height: 1.7; }
 
   /* ===== History ===== */
@@ -492,7 +544,7 @@
     box-shadow: 0 0 0 1.5px var(--clay-soft);
   }
   .tl-body { padding-left: 22px; }
-  .tl-body h4 { font-size: 18px; font-weight: 600; margin-bottom: 5px; color: var(--ink); }
+  .tl-body h3 { font-size: 18px; font-weight: 600; margin-bottom: 5px; color: var(--ink); }
   .tl-body p { color: var(--ink-muted); font-size: 14.5px; line-height: 1.65; }
 
   /* ===== Contact ===== */
@@ -553,6 +605,44 @@
   .form-submit { width: 100%; justify-content: center; padding: 16px; font-size: 16px; }
   .form-note { text-align: center; font-size: 13px; color: var(--ink-muted); margin-top: 14px; }
 
+  /* --- 폼 검증 --- */
+  .req { color: var(--danger); margin-left: 3px; }
+  .form-required-note { font-size: 13px; color: var(--ink-muted); margin-bottom: 20px; }
+  .form-errors {
+    background: #FDF2F2;
+    border: 1px solid var(--danger);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+  }
+  .form-errors h3 { font-size: 15px; font-weight: 600; color: var(--danger); margin-bottom: 8px; }
+  .form-errors ul { list-style: none; }
+  .form-errors li { margin-top: 5px; }
+  .form-errors a { color: var(--danger); font-size: 14px; }
+  .field-error {
+    margin-top: 7px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--danger);
+  }
+  /* 색만으로 오류를 알리지 않도록 기호를 함께 표기 (인라인이라 줄바꿈이 자연스럽다) */
+  .field-error::before { content: '! '; font-weight: 700; }
+  .form-row input[aria-invalid="true"], .form-row textarea[aria-invalid="true"] { border-color: var(--danger); }
+  .form-row input[aria-invalid="true"]:focus, .form-row textarea[aria-invalid="true"]:focus {
+    box-shadow: 0 0 0 3px rgba(185,28,28,0.12);
+  }
+  .form-status {
+    margin-top: 14px;
+    padding: 13px 16px;
+    border-radius: 12px;
+    background: #EDF7F0;
+    border: 1px solid var(--success);
+    color: var(--success);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+  }
+
   /* ===== Footer ===== */
   footer { background: var(--bg-deep); color: rgba(234,244,251,0.62); padding: 64px 0 36px; }
   .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 34px; padding-bottom: 40px; border-bottom: 1px solid rgba(234,244,251,0.12); }
@@ -560,10 +650,10 @@
   .footer-brand .logo { color: #EAF4FB; margin-bottom: 16px; }
   .footer-brand .logo .ko { color: #EAF4FB; }
   .footer-brand .logo .ko span { color: var(--cyan); }
-  .footer-brand .logo .en { color: rgba(234,244,251,0.5); }
+  .footer-brand .logo .en { color: rgba(234,244,251,0.7); }
   .footer-brand p { font-size: 14px; line-height: 1.7; }
   .footer-cols { display: flex; gap: 60px; flex-wrap: wrap; }
-  .footer-col h5 { color: #EAF4FB; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+  .footer-col h3 { color: #EAF4FB; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
   .footer-col a { display: block; color: rgba(234,244,251,0.55); text-decoration: none; font-size: 14px; margin-bottom: 11px; transition: color 0.2s ease; }
   .footer-col a:hover { color: var(--cyan); }
   .footer-bottom { padding-top: 26px; font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: rgba(234,244,251,0.6); }
@@ -584,7 +674,9 @@
 
   /* ===== Responsive ===== */
   @media (max-width: 900px) {
-    .menu-toggle { display: block; }
+    .menu-toggle { display: grid; place-items: center; }
+    /* 44px 타깃 2개가 들어갈 자리를 확보 */
+    .nav-right { gap: 10px; }
     nav ul {
       flex-direction: column;
       align-items: stretch;
@@ -614,6 +706,9 @@
     nav li { width: 100%; }
     nav a { display: block; padding: 12px 16px; border-radius: 10px; font-size: 16px; }
     nav a:hover { background: var(--clay-bg); color: var(--clay); }
+    /* 드롭다운에서는 밑줄 대신 배경으로 현재 위치를 표시 */
+    nav a.is-active:not(.nav-cta) { background: var(--clay-bg); }
+    nav a.is-active:not(.nav-cta)::after { display: none; }
     .stats { grid-template-columns: repeat(2, 1fr); }
     .mv-grid { grid-template-columns: 1fr; }
     .biz-grid { grid-template-columns: 1fr; }
@@ -628,6 +723,7 @@
     .tl-item { gap: 22px; }
   }
   @media (max-width: 540px) {
+    .logo-text .en { font-size: 11px; letter-spacing: 1.2px; }
     .stats { grid-template-columns: 1fr; }
     .form-row.two { grid-template-columns: 1fr; }
     .contact-form { padding: 30px 24px; }
@@ -639,11 +735,13 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main" data-i18n="a11y.skip">본문 바로가기</a>
+
 <!-- Navigation -->
 <header id="header">
   <div class="container nav-inner">
     <a href="#home" class="logo">
-      <img class="logo-mark" src="assets/brand/symbol.png" alt="" width="27" height="40">
+      <img class="logo-mark" src="assets/brand/symbol.svg" alt="" width="26" height="40">
       <span class="logo-text">
         <span class="ko" data-i18n="brand.name">새암<span>정보</span></span>
         <span class="en" data-i18n="brand.tagline">SAEAM INFORMATION</span>
@@ -667,6 +765,8 @@
     </div>
   </div>
 </header>
+
+<main id="main" tabindex="-1">
 
 <!-- Hero -->
 <section class="hero" id="home">
@@ -693,9 +793,9 @@
     </div>
     <div class="stats">
       <div class="stat-card reveal"><div class="stat-num">2014</div><div class="stat-label" data-i18n="about.stat.founded">설립 연도</div></div>
-      <div class="stat-card reveal"><div class="stat-num" data-target="2"><span class="suffix" data-i18n="about.stat.suffix.core">대</span></div><div class="stat-label" data-i18n="about.stat.core">제조·공공 핵심 사업</div></div>
-      <div class="stat-card reveal"><div class="stat-num" data-target="10"><span class="suffix">+</span></div><div class="stat-label" data-i18n="about.stat.clients">주요 고객사</div></div>
-      <div class="stat-card reveal"><div class="stat-num" data-target="12"><span class="suffix" data-i18n="about.stat.suffix.years">년+</span></div><div class="stat-label" data-i18n="about.stat.expertise">축적된 전문성</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="2">2<span class="suffix" data-i18n="about.stat.suffix.core">대</span></div><div class="stat-label" data-i18n="about.stat.core">제조·공공 핵심 사업</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="10">10<span class="suffix">+</span></div><div class="stat-label" data-i18n="about.stat.clients">주요 고객사</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="12">12<span class="suffix" data-i18n="about.stat.suffix.years">년+</span></div><div class="stat-label" data-i18n="about.stat.expertise">축적된 전문성</div></div>
     </div>
 
     <div class="mv-grid">
@@ -826,17 +926,17 @@
     <div class="ai-features">
       <div class="ai-card reveal">
         <div class="num">01</div>
-        <h4 data-i18n="ai.card.1.title">AI 기반 생산계획·재고관리</h4>
+        <h3 data-i18n="ai.card.1.title">AI 기반 생산계획·재고관리</h3>
         <p data-i18n="ai.card.1.desc">예측 모델을 활용해 생산 일정을 자동으로 생성하고, 스마트 재고관리로 제조 현장의 운영 효율을 끌어올립니다.</p>
       </div>
       <div class="ai-card reveal">
         <div class="num">02</div>
-        <h4 data-i18n="ai.card.2.title">AI를 활용한 개발 혁신</h4>
+        <h3 data-i18n="ai.card.2.title">AI를 활용한 개발 혁신</h3>
         <p data-i18n="ai.card.2.desc">코딩 자동화와 지능형 오류 감지·수정으로 소프트웨어 개발 생산성을 높이고 품질을 향상시킵니다.</p>
       </div>
       <div class="ai-card reveal">
         <div class="num">03</div>
-        <h4 data-i18n="ai.card.3.title">데이터 마이닝·최적화</h4>
+        <h3 data-i18n="ai.card.3.title">데이터 마이닝·최적화</h3>
         <p data-i18n="ai.card.3.desc">AI와 빅데이터 기술을 접목해 데이터 기반의 최적화된 솔루션을 제공하고 스마트한 운영을 지원합니다.</p>
       </div>
     </div>
@@ -854,23 +954,23 @@
     <div class="timeline">
       <div class="tl-item reveal">
         <div class="tl-year">2025</div>
-        <div class="tl-body"><h4 data-i18n="history.2025.title">AI 사업본부 신설</h4><p data-i18n="history.2025.desc">제조·공공 특화 AI 솔루션 개발 전담 조직을 출범하고 본격적인 AI 전환에 착수했습니다.</p></div>
+        <div class="tl-body"><h3 data-i18n="history.2025.title">AI 사업본부 신설</h3><p data-i18n="history.2025.desc">제조·공공 특화 AI 솔루션 개발 전담 조직을 출범하고 본격적인 AI 전환에 착수했습니다.</p></div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">2020</div>
-        <div class="tl-body"><h4 data-i18n="history.2020.title">디센터 1976으로 사옥 이전</h4><p data-i18n="history.2020.desc">창업보육센터에서의 6년을 마무리하고 대구 디센터 1976에 새 둥지를 틀며 한 단계 도약했습니다.</p></div>
+        <div class="tl-body"><h3 data-i18n="history.2020.title">디센터 1976으로 사옥 이전</h3><p data-i18n="history.2020.desc">창업보육센터에서의 6년을 마무리하고 대구 디센터 1976에 새 둥지를 틀며 한 단계 도약했습니다.</p></div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">2018</div>
-        <div class="tl-body"><h4 data-i18n="history.2018.title">VPH메탈 MES 구축</h4><p data-i18n="history.2018.desc">제조 현장 MES 구축 프로젝트를 수행하며 제조 IT 역량을 본격적으로 확장했습니다.</p></div>
+        <div class="tl-body"><h3 data-i18n="history.2018.title">VPH메탈 MES 구축</h3><p data-i18n="history.2018.desc">제조 현장 MES 구축 프로젝트를 수행하며 제조 IT 역량을 본격적으로 확장했습니다.</p></div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">2016</div>
-        <div class="tl-body"><h4 data-i18n="history.2016.title">한국교육학술정보원 사업 수행</h4><p data-i18n="history.2016.desc">교육 분야 공공 정보화 프로젝트를 수행하며 공공 사업 영역을 한층 넓혔습니다.</p></div>
+        <div class="tl-body"><h3 data-i18n="history.2016.title">한국교육학술정보원 사업 수행</h3><p data-i18n="history.2016.desc">교육 분야 공공 정보화 프로젝트를 수행하며 공공 사업 영역을 한층 넓혔습니다.</p></div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">2014</div>
-        <div class="tl-body"><h4 data-i18n="history.2014.title">주식회사 새암정보 설립</h4><p data-i18n="history.2014.desc">영남이공대학교 창업보육센터에서 출발해, 한국산업인력공단 공공 프로젝트와 제조 SCM·MES 구축으로 공공·제조 두 분야에 동시에 첫발을 내디뎠습니다.</p></div>
+        <div class="tl-body"><h3 data-i18n="history.2014.title">주식회사 새암정보 설립</h3><p data-i18n="history.2014.desc">영남이공대학교 창업보육센터에서 출발해, 한국산업인력공단 공공 프로젝트와 제조 SCM·MES 구축으로 공공·제조 두 분야에 동시에 첫발을 내디뎠습니다.</p></div>
       </div>
     </div>
   </div>
@@ -895,49 +995,73 @@
         <div class="txt"><div class="label" data-i18n="contact.label.visit">오시는 길</div><div class="val" data-i18n="contact.address">대구광역시 서구 와룡로 307<br>디센터 1976, 608호</div></div>
       </div>
     </div>
-    <form class="contact-form reveal" onsubmit="return handleSubmit(event)">
+    <form class="contact-form reveal" id="cf-form" novalidate>
+      <!-- 제출 실패 시 이 요약으로 포커스를 옮기고, 각 항목은 해당 입력칸으로 링크한다 -->
+      <div class="form-errors" id="cf-errors" role="alert" tabindex="-1" hidden>
+        <h3 data-i18n="contact.form.err.title">입력을 확인해 주세요</h3>
+        <ul></ul>
+      </div>
+      <p class="form-required-note" data-i18n="contact.form.requiredNote">* 표시는 필수 입력 항목입니다.</p>
       <div class="form-row two">
-        <div><label for="cf-company" data-i18n="contact.form.company">회사명</label><input id="cf-company" name="company" type="text" autocomplete="organization" data-i18n="contact.form.ph.company" data-i18n-attr="placeholder" placeholder="회사명을 입력하세요"></div>
-        <div><label for="cf-name" data-i18n="contact.form.name">담당자명</label><input id="cf-name" name="name" type="text" autocomplete="name" data-i18n="contact.form.ph.name" data-i18n-attr="placeholder" placeholder="성함을 입력하세요"></div>
+        <div>
+          <label for="cf-company" data-i18n="contact.form.company">회사명</label>
+          <input id="cf-company" name="company" type="text" autocomplete="organization" data-i18n="contact.form.ph.company" data-i18n-attr="placeholder" placeholder="회사명을 입력하세요">
+        </div>
+        <div>
+          <label for="cf-name"><span data-i18n="contact.form.name">담당자명</span><span class="req" aria-hidden="true">*</span></label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name" aria-describedby="cf-name-error" data-i18n="contact.form.ph.name" data-i18n-attr="placeholder" placeholder="성함을 입력하세요">
+          <p class="field-error" id="cf-name-error" hidden></p>
+        </div>
       </div>
       <div class="form-row two">
-        <div><label for="cf-phone" data-i18n="contact.form.phone">연락처</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000"></div>
-        <div><label for="cf-email" data-i18n="contact.form.email">이메일</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="email@company.com"></div>
+        <div>
+          <label for="cf-phone" data-i18n="contact.form.phone">연락처</label>
+          <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000">
+        </div>
+        <div>
+          <label for="cf-email"><span data-i18n="contact.form.email">이메일</span><span class="req" aria-hidden="true">*</span></label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email" aria-describedby="cf-email-error" placeholder="email@company.com">
+          <p class="field-error" id="cf-email-error" hidden></p>
+        </div>
       </div>
       <div class="form-row">
-        <label for="cf-message" data-i18n="contact.form.message">문의 내용</label>
-        <textarea id="cf-message" name="message" data-i18n="contact.form.ph.message" data-i18n-attr="placeholder" placeholder="도입을 검토 중인 사업이나 궁금한 점을 자유롭게 남겨 주세요."></textarea>
+        <label for="cf-message"><span data-i18n="contact.form.message">문의 내용</span><span class="req" aria-hidden="true">*</span></label>
+        <textarea id="cf-message" name="message" required aria-describedby="cf-message-error" data-i18n="contact.form.ph.message" data-i18n-attr="placeholder" placeholder="도입을 검토 중인 사업이나 궁금한 점을 자유롭게 남겨 주세요."></textarea>
+        <p class="field-error" id="cf-message-error" hidden></p>
       </div>
       <button type="submit" class="btn btn-primary form-submit" data-i18n="contact.form.submit">문의 보내기 →</button>
+      <p class="form-status" id="cf-status" role="status" hidden></p>
       <p class="form-note" data-i18n="contact.form.note">* 본 시안의 문의 폼은 데모용으로, 실제 전송되지 않습니다.</p>
     </form>
   </div>
 </section>
+
+</main>
 
 <!-- Footer -->
 <footer>
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#home" class="logo"><img class="logo-mark" src="assets/brand/symbol-white.png" alt="" width="23" height="34"><span class="logo-text"><span class="ko" data-i18n="brand.name">새암<span>정보</span></span><span class="en" data-i18n="brand.tagline">SAEAM INFORMATION</span></span></a>
+        <a href="#home" class="logo"><img class="logo-mark" src="assets/brand/symbol-white.svg" alt="" width="22" height="34"><span class="logo-text"><span class="ko" data-i18n="brand.name">새암<span>정보</span></span><span class="en" data-i18n="brand.tagline">SAEAM INFORMATION</span></span></a>
         <p data-i18n="footer.intro">제조와 공공의 디지털 혁신을 지원하는 IT 전문기업. 검증된 기술과 신뢰로 고객의 성장을 함께합니다.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h5 data-i18n="footer.col.company">회사</h5>
+          <h3 data-i18n="footer.col.company">회사</h3>
           <a href="#about" data-i18n="nav.about">회사소개</a>
           <a href="#history" data-i18n="nav.history">연혁</a>
           <a href="#ai" data-i18n="nav.ai">AI 역량</a>
           <a href="ci.html" data-i18n="footer.link.brand">브랜드 가이드</a>
         </div>
         <div class="footer-col">
-          <h5 data-i18n="footer.col.business">사업</h5>
+          <h3 data-i18n="footer.col.business">사업</h3>
           <a href="#business" data-i18n="footer.link.mfg">제조 솔루션</a>
           <a href="#business" data-i18n="footer.link.pub">공공 솔루션</a>
           <a href="#clients" data-i18n="nav.clients">고객사</a>
         </div>
         <div class="footer-col">
-          <h5 data-i18n="footer.col.contact">문의</h5>
+          <h3 data-i18n="footer.col.contact">문의</h3>
           <a href="tel:053-217-5630">053-217-5630</a>
           <a href="mailto:swchoi@sainfo.co.kr">swchoi@sainfo.co.kr</a>
         </div>
@@ -954,6 +1078,7 @@
   /* ===== i18n (ko / en) — 원본 소스: i18n-copy.md ===== */
   const I18N = {
     ko: {
+      "a11y.skip":"본문 바로가기",
       "nav.about":"회사소개","nav.business":"사업영역","nav.clients":"고객사","nav.ai":"AI 역량","nav.history":"연혁","nav.contact":"문의하기",
       "brand.name":"새암<span>정보</span>","brand.tagline":"SAEAM INFORMATION",
       "hero.badge":"2014년부터 함께한 제조·공공 IT 파트너",
@@ -993,13 +1118,18 @@
       "contact.form.company":"회사명","contact.form.name":"담당자명","contact.form.phone":"연락처","contact.form.email":"이메일","contact.form.message":"문의 내용",
       "contact.form.ph.company":"회사명을 입력하세요","contact.form.ph.name":"성함을 입력하세요","contact.form.ph.message":"도입을 검토 중인 사업이나 궁금한 점을 자유롭게 남겨 주세요.",
       "contact.form.submit":"문의 보내기 →","contact.form.note":"* 본 시안의 문의 폼은 데모용으로, 실제 전송되지 않습니다.",
-      "contact.alert":"문의가 접수되었습니다.\n(본 시안은 데모이며 실제로는 전송되지 않습니다.)",
+      "contact.form.requiredNote":"* 표시는 필수 입력 항목입니다.",
+      "contact.form.err.title":"입력을 확인해 주세요",
+      "contact.form.err.name":"담당자명을 입력해 주세요.","contact.form.err.email":"이메일을 입력해 주세요.",
+      "contact.form.err.emailFormat":"이메일 형식을 확인해 주세요.","contact.form.err.message":"문의 내용을 입력해 주세요.",
+      "contact.form.success":"문의가 접수되었습니다. 본 시안은 데모이며 실제로는 전송되지 않습니다.",
       "footer.intro":"제조와 공공의 디지털 혁신을 지원하는 IT 전문기업. 검증된 기술과 신뢰로 고객의 성장을 함께합니다.",
       "footer.col.company":"회사","footer.col.business":"사업","footer.col.contact":"문의",
       "footer.link.brand":"브랜드 가이드","footer.link.mfg":"제조 솔루션","footer.link.pub":"공공 솔루션",
       "footer.copyright":"© 2026 주식회사 새암정보. All rights reserved.","footer.address":"대구광역시 서구 와룡로 307 디센터 1976 608호"
     },
     en: {
+      "a11y.skip":"Skip to main content",
       "nav.about":"About","nav.business":"Business","nav.clients":"Clients","nav.ai":"AI","nav.history":"History","nav.contact":"Contact",
       "brand.name":"SAEAM","brand.tagline":"INFORMATION",
       "hero.badge":"Your manufacturing & public-sector IT partner since 2014",
@@ -1039,7 +1169,11 @@
       "contact.form.company":"Company","contact.form.name":"Name","contact.form.phone":"Phone","contact.form.email":"Email","contact.form.message":"Message",
       "contact.form.ph.company":"Your company","contact.form.ph.name":"Your name","contact.form.ph.message":"Tell us about the project you're considering, or any questions you have.",
       "contact.form.submit":"Send message →","contact.form.note":"* This form is a demo and does not actually send.",
-      "contact.alert":"Thanks — your inquiry has been received.\n(This is a demo and is not actually sent.)",
+      "contact.form.requiredNote":"* Required fields",
+      "contact.form.err.title":"Please check your entries",
+      "contact.form.err.name":"Enter your name.","contact.form.err.email":"Enter your email address.",
+      "contact.form.err.emailFormat":"Enter a valid email address.","contact.form.err.message":"Enter your message.",
+      "contact.form.success":"Thanks — your inquiry has been received. This is a demo and is not actually sent.",
       "footer.intro":"An IT specialist driving digital innovation in manufacturing and the public sector — growing alongside our clients on proven technology and trust.",
       "footer.col.company":"Company","footer.col.business":"Business","footer.col.contact":"Contact",
       "footer.link.brand":"Brand Guide","footer.link.mfg":"Manufacturing","footer.link.pub":"Public Sector",
@@ -1078,9 +1212,38 @@
   })();
 
   const header = document.getElementById('header');
+
+  /* ===== 현재 보고 있는 섹션을 내비게이션에 표시 (scroll-spy) ===== */
+  const spyLinks = Array.from(document.querySelectorAll('#primary-nav a[href^="#"]'))
+    .map(a => ({ a, el: document.getElementById(a.getAttribute('href').slice(1)) }))
+    .filter(l => l.el);
+
+  function updateActiveNav() {
+    const line = window.scrollY + 110; // 고정 헤더 바로 아래에 둔 기준선
+    let current = null;
+    spyLinks.forEach(({ el }) => {
+      if (el.getBoundingClientRect().top + window.scrollY <= line) current = el;
+    });
+    // 마지막 섹션이 짧아 기준선에 닿지 못하는 경우 대비
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      current = spyLinks[spyLinks.length - 1].el;
+    }
+    spyLinks.forEach(({ a, el }) => {
+      const on = el === current;
+      a.classList.toggle('is-active', on);
+      if (on) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  let scrollQueued = false;
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 40);
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(() => { updateActiveNav(); scrollQueued = false; });
   });
+  updateActiveNav();
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
@@ -1153,12 +1316,92 @@
     if (!e.matches) setMobileNav(false);
   });
 
-  function handleSubmit(e) {
-    if (e) e.preventDefault();
-    const lang = document.documentElement.lang === 'en' ? 'en' : 'ko';
-    alert(I18N[lang]['contact.alert']);
-    return false;
+  /* ===== 문의 폼 검증 (데모 — 실제 전송 없음) ===== */
+  const form = document.getElementById('cf-form');
+  const errorBox = document.getElementById('cf-errors');
+  const errorList = errorBox.querySelector('ul');
+  const statusBox = document.getElementById('cf-status');
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const RULES = [
+    { id: 'cf-name', empty: 'contact.form.err.name' },
+    { id: 'cf-email', empty: 'contact.form.err.email',
+      invalid: 'contact.form.err.emailFormat', test: v => EMAIL_RE.test(v) },
+    { id: 'cf-message', empty: 'contact.form.err.message' }
+  ];
+  const t = key => (I18N[document.documentElement.lang] || I18N.ko)[key] || key;
+
+  function validateField(rule) {
+    const value = document.getElementById(rule.id).value.trim();
+    if (!value) return rule.empty;
+    if (rule.test && !rule.test(value)) return rule.invalid;
+    return null;
   }
+
+  function paintField(rule, key) {
+    const input = document.getElementById(rule.id);
+    const msg = document.getElementById(rule.id + '-error');
+    if (key) {
+      // data-i18n을 심어 두면 언어를 바꿔도 applyI18n이 문구를 다시 채운다
+      msg.setAttribute('data-i18n', key);
+      msg.textContent = t(key);
+      msg.hidden = false;
+      input.setAttribute('aria-invalid', 'true');
+    } else {
+      msg.removeAttribute('data-i18n');
+      msg.textContent = '';
+      msg.hidden = true;
+      input.removeAttribute('aria-invalid');
+    }
+  }
+
+  RULES.forEach(rule => {
+    const input = document.getElementById(rule.id);
+    // 입력하는 중이 아니라 칸을 벗어날 때 검증한다
+    input.addEventListener('blur', () => paintField(rule, validateField(rule)));
+    // 이미 오류가 표시된 칸은 고쳐지는 즉시 오류를 지운다
+    input.addEventListener('input', () => {
+      if (input.getAttribute('aria-invalid') === 'true' && !validateField(rule)) paintField(rule, null);
+    });
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    statusBox.hidden = true;
+    const failed = [];
+    RULES.forEach(rule => {
+      const key = validateField(rule);
+      paintField(rule, key);
+      if (key) failed.push({ rule, key });
+    });
+
+    if (failed.length) {
+      errorList.innerHTML = '';
+      failed.forEach(({ rule, key }) => {
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = '#' + rule.id;
+        link.setAttribute('data-i18n', key);
+        link.textContent = t(key);
+        link.addEventListener('click', ev => {
+          ev.preventDefault();
+          document.getElementById(rule.id).focus();
+        });
+        li.appendChild(link);
+        errorList.appendChild(li);
+      });
+      errorBox.hidden = false;
+      errorBox.focus();
+      return;
+    }
+
+    errorBox.hidden = true;
+    form.reset();
+    statusBox.setAttribute('data-i18n', 'contact.form.success');
+    statusBox.textContent = t('contact.form.success');
+    statusBox.hidden = false;
+  }
+
+  form.addEventListener('submit', handleSubmit);
 </script>
 </body>
 </html>
