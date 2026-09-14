@@ -520,7 +520,17 @@
     transition: all 0.35s ease;
   }
   .ai-card:hover { background: rgba(65,190,232,0.1); border-color: rgba(65,190,232,0.4); }
-  .ai-card .num { font-family: var(--serif); font-size: 30px; color: var(--cyan); margin-bottom: 18px; }
+  .ai-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+  .ai-card .num { font-family: var(--serif); font-size: 30px; color: var(--cyan); }
+  /* 적용 중 / 준비 중 — 완료형으로 과장하지 않고 단계를 그대로 보여준다 */
+  .ai-status {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+    padding: 4px 11px; border-radius: 100px;
+    border: 1px solid rgba(65,190,232,0.5);
+    color: var(--cyan);
+    white-space: nowrap;
+  }
+  .ai-status.is-live { background: var(--cyan); color: var(--bg-deep); border-color: var(--cyan); }
   .ai-card h3 { color: #EAF4FB; font-family: var(--serif); font-size: 21px; font-weight: 500; margin-bottom: 12px; }
   .ai-card p { color: rgba(234,244,251,0.6); font-size: 14.5px; line-height: 1.7; }
 
@@ -937,19 +947,19 @@
     </div>
     <div class="ai-features">
       <div class="ai-card reveal">
-        <div class="num">01</div>
-        <h3 data-i18n="ai.card.1.title">AI 기반 생산계획·재고관리</h3>
-        <p data-i18n="ai.card.1.desc">예측 모델을 활용해 생산 일정을 자동으로 생성하고, 스마트 재고관리로 제조 현장의 운영 효율을 끌어올립니다.</p>
+        <div class="ai-card-head"><div class="num">01</div><span class="ai-status is-live" data-i18n="ai.card.1.status">적용 중</span></div>
+        <h3 data-i18n="ai.card.1.title">AI 활용 개발·유지보수</h3>
+        <p data-i18n="ai.card.1.desc">운영 중인 시스템의 유지보수를 위한 사내 개발 하네스(공통 개발·검증 기반) 구축과 개발 코딩에 AI 도구를 적용해, 요구사항 분석부터 코드 생성·검토까지 개발 속도와 품질을 함께 높이고 있습니다.</p>
       </div>
       <div class="ai-card reveal">
-        <div class="num">02</div>
-        <h3 data-i18n="ai.card.2.title">AI를 활용한 개발 혁신</h3>
-        <p data-i18n="ai.card.2.desc">코딩 자동화와 지능형 오류 감지·수정으로 소프트웨어 개발 생산성을 높이고 품질을 향상시킵니다.</p>
+        <div class="ai-card-head"><div class="num">02</div><span class="ai-status" data-i18n="ai.card.2.status">준비 중</span></div>
+        <h3 data-i18n="ai.card.2.title">AI 기반 생산계획·재고관리</h3>
+        <p data-i18n="ai.card.2.desc">축적된 MES·SCM 데이터를 바탕으로 수요 예측과 생산 일정 자동 생성 모델을 준비하고 있습니다. 운영 중인 고객사 현장부터 순차 적용할 계획입니다.</p>
       </div>
       <div class="ai-card reveal">
-        <div class="num">03</div>
-        <h3 data-i18n="ai.card.3.title">데이터 마이닝·최적화</h3>
-        <p data-i18n="ai.card.3.desc">AI와 빅데이터 기술을 접목해 데이터 기반의 최적화된 솔루션을 제공하고 스마트한 운영을 지원합니다.</p>
+        <div class="ai-card-head"><div class="num">03</div><span class="ai-status" data-i18n="ai.card.3.status">준비 중</span></div>
+        <h3 data-i18n="ai.card.3.title">데이터 분석·최적화</h3>
+        <p data-i18n="ai.card.3.desc">원가·품질·설비 데이터에서 이상 징후와 개선 여지를 찾아내는 분석 서비스를 준비하고 있습니다.</p>
       </div>
     </div>
   </div>
@@ -1118,9 +1128,9 @@
       "clients.mfg.1":"평화발레오","clients.mfg.2":"평화정공","clients.mfg.3":"VPH메탈","clients.mfg.4":"VPHC","clients.mfg.5":"VPH","clients.mfg.6":"크레택",
       "clients.pub.1":"한국교육학술정보원(KERIS)","clients.pub.2":"한국산업인력공단","clients.pub.3":"대구광역시청","clients.pub.4":"DGIST",
       "ai.title":"축적된 도메인 위에<br><em>인공지능</em>을 더하다","ai.desc":"오랜 현장 경험에서 나온 데이터와 노하우에 AI를 결합해, 제조업과 IT 개발의 디지털 혁신을 선도합니다.",
-      "ai.card.1.title":"AI 기반 생산계획·재고관리","ai.card.1.desc":"예측 모델을 활용해 생산 일정을 자동으로 생성하고, 스마트 재고관리로 제조 현장의 운영 효율을 끌어올립니다.",
-      "ai.card.2.title":"AI를 활용한 개발 혁신","ai.card.2.desc":"코딩 자동화와 지능형 오류 감지·수정으로 소프트웨어 개발 생산성을 높이고 품질을 향상시킵니다.",
-      "ai.card.3.title":"데이터 마이닝·최적화","ai.card.3.desc":"AI와 빅데이터 기술을 접목해 데이터 기반의 최적화된 솔루션을 제공하고 스마트한 운영을 지원합니다.",
+      "ai.card.1.status":"적용 중","ai.card.1.title":"AI 활용 개발·유지보수","ai.card.1.desc":"운영 중인 시스템의 유지보수를 위한 사내 개발 하네스(공통 개발·검증 기반) 구축과 개발 코딩에 AI 도구를 적용해, 요구사항 분석부터 코드 생성·검토까지 개발 속도와 품질을 함께 높이고 있습니다.",
+      "ai.card.2.status":"준비 중","ai.card.2.title":"AI 기반 생산계획·재고관리","ai.card.2.desc":"축적된 MES·SCM 데이터를 바탕으로 수요 예측과 생산 일정 자동 생성 모델을 준비하고 있습니다. 운영 중인 고객사 현장부터 순차 적용할 계획입니다.",
+      "ai.card.3.status":"준비 중","ai.card.3.title":"데이터 분석·최적화","ai.card.3.desc":"원가·품질·설비 데이터에서 이상 징후와 개선 여지를 찾아내는 분석 서비스를 준비하고 있습니다.",
       "history.title":"성장의 <em>발자취</em>","history.desc":"한 걸음씩 쌓아온 기술과 신뢰의 기록입니다.",
       "history.2025.title":"AI 사업본부 신설","history.2025.desc":"제조·공공 특화 AI 솔루션 개발 전담 조직을 출범하고 본격적인 AI 전환에 착수했습니다.",
       "history.2020.title":"디센터 1976으로 사옥 이전","history.2020.desc":"창업보육센터에서의 6년을 마무리하고 대구 디센터 1976에 새 둥지를 틀며 한 단계 도약했습니다.",
@@ -1174,9 +1184,9 @@
       "clients.mfg.1":"Valeo Pyeonghwa","clients.mfg.2":"PHA","clients.mfg.3":"VPH Metal","clients.mfg.4":"VPHC","clients.mfg.5":"VPH","clients.mfg.6":"CRETEC",
       "clients.pub.1":"KERIS","clients.pub.2":"HRD Korea","clients.pub.3":"Daegu Metropolitan City","clients.pub.4":"DGIST",
       "ai.title":"Layering <em>AI</em> onto<br>deep domain expertise","ai.desc":"By pairing AI with years of on-the-ground experience — our field data and domain expertise — we lead digital innovation in manufacturing and software development.",
-      "ai.card.1.title":"AI-Driven Production Planning & Inventory","ai.card.1.desc":"Predictive models generate production schedules automatically, while smart inventory management enhances shop-floor efficiency.",
-      "ai.card.2.title":"AI-Powered Development","ai.card.2.desc":"Automated coding and intelligent error detection boost both the productivity and quality of software development.",
-      "ai.card.3.title":"Data Mining & Optimization","ai.card.3.desc":"We fuse AI with big-data techniques to deliver data-driven, optimized solutions and smarter operations.",
+      "ai.card.1.status":"In use","ai.card.1.title":"AI-Assisted Development & Maintenance","ai.card.1.desc":"We apply AI tools to building our in-house development harness (shared build-and-verify base) for maintaining live systems and to day-to-day coding — from requirements analysis to code generation and review — raising both speed and quality.",
+      "ai.card.2.status":"In preparation","ai.card.2.title":"AI-Driven Production Planning & Inventory","ai.card.2.desc":"Using accumulated MES/SCM data, we are preparing demand-forecasting and automatic scheduling models, to be rolled out first at the client sites we already operate.",
+      "ai.card.3.status":"In preparation","ai.card.3.title":"Data Analytics & Optimization","ai.card.3.desc":"We are preparing analytics services that surface anomalies and improvement opportunities in cost, quality and equipment data.",
       "history.title":"Milestones of <em>growth</em>","history.desc":"A record of technology and trust, built one step at a time.",
       "history.2025.title":"AI Business Division launched","history.2025.desc":"Established a dedicated team for manufacturing- and public-sector AI solutions, beginning a full-scale AI transition.",
       "history.2020.title":"Moved to D-Center 1976","history.2020.desc":"After six years at the startup incubator, we relocated to D-Center 1976 in Daegu and scaled our operations.",
