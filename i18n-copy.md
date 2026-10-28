@@ -10,7 +10,7 @@
 | key | ko | en |
 |---|---|---|
 | meta.title | 주식회사 새암정보 \| 제조·공공 IT 전문기업 | SAEAM Information — Manufacturing & Public-Sector IT Specialist |
-| meta.desc | 주식회사 새암정보는 2014년부터 제조(MES·SCM)와 공공(NEIS)을 중심으로 맞춤형 IT 솔루션과 AI 기반 혁신을 제공하는 IT 전문기업입니다. | Since 2014, SAEAM Information has delivered tailored IT solutions and AI-driven innovation across manufacturing (MES·SCM) and the public sector (NEIS). |
+| meta.desc | 주식회사 새암정보는 2014년부터 제조(구매원가·제조원가·SCM·전자계약)와 공공사업을 중심으로 맞춤형 IT 솔루션과 AI 기반 혁신을 제공하는 IT 전문기업입니다. | Since 2014, SAEAM Information has delivered tailored IT solutions and AI-driven innovation across manufacturing (purchasing cost, manufacturing cost, SCM, e-contracts) and public-sector projects. |
 | nav.about | 회사소개 | About |
 | nav.business | 사업영역 | Business |
 | nav.clients | 고객사 | Clients |
@@ -26,7 +26,7 @@
 |---|---|---|
 | hero.badge | 2014년부터 함께한 제조·공공 IT 파트너 | Your manufacturing & public-sector IT partner since 2014 |
 | hero.title | 고객의 능력이 / 샘솟듯 넘쳐나도록 | Where Technology Wells Up, / Capabilities Overflow |
-| hero.sub | 주식회사 새암정보는 제조업과 공공부문의 디지털 혁신을 지원하는 IT 전문기업입니다. 끊임없는 기술 혁신으로 고객에게 최상의 가치를 제공합니다. | SAEAM Information advances digital transformation across manufacturing and the public sector, delivering the highest value through relentless innovation. |
+| hero.sub | 주식회사 새암정보는 구매원가·제조원가·SCM·전자계약으로 제조기업의 핵심 업무를 하나로 잇고, 공공사업에 특화된 IT 서비스를 제공하는 IT 전문기업입니다. | SAEAM Information connects manufacturers' core operations — purchasing cost, manufacturing cost, SCM and e-contracts — and delivers IT services specialized for public-sector projects. |
 | hero.btn.primary | 사업영역 보기 | Explore our work |
 | hero.btn.ghost | 문의하기 | Get in touch |
 
@@ -60,14 +60,15 @@
 | biz.title | 제조와 공공을 중심으로, 영역을 넓혀가는 전문성 | Built on manufacturing and public services, reaching ever further |
 | biz.desc | 제조와 공공 두 핵심 축을 기반으로, 무역·물류와 연구기관 행정까지 다양한 분야의 맞춤형 솔루션을 제공합니다. | Grounded in our two pillars — manufacturing and the public sector — we deliver tailored solutions across fields from trade and logistics to research-institute administration. |
 | biz.mfg.title | 제조 Application | Manufacturing Applications |
-| biz.mfg.desc | MES와 SCM을 중심으로 생산 공정과 공급망 전반을 통합 관리하고, 구매원가·금형까지 아우르는 솔루션으로 제조 경쟁력을 높입니다. | Centered on MES and SCM, we integrate production and the full supply chain — extending to purchasing-cost and mold management — to sharpen manufacturing competitiveness. |
-| biz.mfg.tag.1 | MES (제조실행) | MES (Manufacturing Execution System) |
-| biz.mfg.tag.2 | SCM (공급망관리) | SCM (Supply Chain Management) |
-| biz.mfg.tag.3 | 구매원가·단가 관리 | Purchasing Cost & Pricing |
-| biz.mfg.tag.4 | 금형 관리 | Mold Management |
-| biz.mfg.tag.5 | 생산공정 모니터링 | Production Monitoring |
+| biz.mfg.desc | 구매원가·제조원가 관리와 SCM을 중심으로, 협력업체 구매부터 전자계약, 생산 현장(MES)까지 제조기업의 핵심 업무를 하나로 연결해 제조 경쟁력을 높입니다. | Centered on purchasing cost, manufacturing cost and SCM, we connect a manufacturer's core operations — from supplier purchasing and e-contracts to the shop floor (MES) — to sharpen manufacturing competitiveness. |
+| biz.mfg.tag.1 | 구매원가·단가 관리 | Purchasing Cost & Pricing |
+| biz.mfg.tag.2 | 제조원가 관리 | Manufacturing Cost Management |
+| biz.mfg.tag.3 | SCM (공급망관리) | SCM (Supply Chain Management) |
+| biz.mfg.tag.4 | 전자계약 | E-Contracts |
+| biz.mfg.tag.5 | MES (제조실행) | MES (Manufacturing Execution System) |
+| biz.mfg.tag.6 | 금형 관리 | Mold Management |
 | biz.pub.title | 공공 Application | Public-Sector Applications |
-| biz.pub.desc | 교육행정정보시스템(NEIS) 유지보수와 기능개선, 4세대 나이스 기술지원을 수행하며, 국민이 신뢰할 수 있는 안정적인 공공 서비스를 실현합니다. | We maintain and enhance the National Education Information System (NEIS) and provide 4th-generation NEIS technical support, delivering stable public services people can trust. |
+| biz.pub.desc | 공공기관의 사업 절차와 요구사항에 특화된 IT 서비스를 제공합니다. NEIS(나이스) 유지보수·기능개선과 4세대 NEIS 기술지원으로 쌓은 경험을 바탕으로, 국민이 신뢰할 수 있는 안정적인 공공 서비스를 실현합니다. | We specialize in public-sector IT projects, built around the procedures and requirements of public institutions. Drawing on NEIS maintenance, enhancement and 4th-generation technical support, we deliver stable public services people can trust. |
 | biz.pub.tag.1 | NEIS 유지보수 | NEIS Maintenance |
 | biz.pub.tag.2 | 나이스 기능개선 | NEIS Enhancements |
 | biz.pub.tag.3 | 4세대 나이스 기술지원 | 4th-Gen NEIS Support |
@@ -85,6 +86,19 @@
 | clients.desc | 제조와 공공 각 분야의 주요 고객과 함께 검증된 성과를 만들어 왔습니다. | We've delivered proven results alongside leading clients across manufacturing and the public sector. |
 | clients.group.mfg | 제조 · 유통 | Manufacturing · Distribution |
 | clients.group.pub | 공공 · 교육 · 연구 | Public · Education · Research |
+| clients.mfg.1.work | 협력업체 자재 구매 SCM(E-SI), 원가관리(PCMS), 매출관리, FMMS, 구매물품 FTA 관리, FAMS(MES) | Supplier purchasing SCM (E-SI), PCMS cost management, sales management, FMMS, purchased-goods FTA management, FAMS (MES) |
+| clients.mfg.3.work | MES 구축·운영 | MES build and operation |
+| clients.mfg.2.work | SCM (공급망관리) | SCM (Supply Chain Management) |
+| clients.mfg.6.work | 무역관리 시스템 | Trade management system |
+| clients.pub.1.work | NEIS 유지보수·기능개선, 4세대 NEIS 기술지원 | NEIS maintenance and enhancement; 4th-generation NEIS technical support |
+| clients.pub.3.work | 공무원 연수관리 시스템, 문자알림 서비스 | Civil-servant training management system; SMS notification service |
+| clients.pub.4.work | 종합행정시스템 | Integrated administration system |
+| clients.pub.2.work | 공공 프로젝트 (2014) | Public-sector project (2014) |
+| clients.status.live | 운영 중 | In operation |
+| clients.status.built | 구축 | Delivered |
+| clients.status.joined | 사업 참여 | Participated |
+| clients.status.done | 수행 | Completed |
+| clients.others | 함께한 고객사 | Also worked with |
 
 **고객사명 [공식 사이트/기업프로필 확인 완료]**
 | ko | en (확정) | 출처·비고 |
@@ -94,7 +108,7 @@
 | VPH메탈 | VPH Metal | 평화발레오 계열, 주물부품 (2012 설립) |
 | VPHC | VPHC | Valeo Pyeonghwa Components (2017 분사) |
 | VPH | VPH | ⚠️ 엔티티 모호(VPHI/그룹브랜드?) — 이미 라틴표기라 유지, 회사 확인 권장 |
-| 크레택 | CRETEC | 대구 공구유통, 공식 전부대문자 (cretec.kr) |
+| 크레텍 | CRETEC | 대구 공구유통, 공식 전부대문자 (cretec.kr) |
 | 한국교육학술정보원(KERIS) | KERIS | Korea Education and Research Information Service |
 | 한국산업인력공단 | HRD Korea | Human Resources Development Service of Korea |
 | 대구광역시청 | Daegu Metropolitan City | 공식 영문명 |
