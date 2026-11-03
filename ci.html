@@ -7,10 +7,9 @@
 <meta name="description" content="주식회사 새암정보(SAEAM INFORMATION)의 CI 브랜드 가이드 — 심볼, 여백·최소 크기, 로고 락업, 컬러, 타이포그래피, 사용 규칙과 자산 다운로드.">
 <meta name="theme-color" content="#0A5BA8">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<!-- 국문 세리프 헤드라인용 웹폰트 (라틴은 Georgia 유지) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap">
+<!-- 본문·헤드라인 공용 웹폰트: Pretendard (SIL OFL 1.1) — index.html 과 동일 -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
   /* 색은 index.html :root 와 같은 값 — 사이트 팔레트를 바꾸면 여기도 함께 바꾼다 */
   :root {
@@ -27,8 +26,8 @@
     --line-soft: #EDF3F8;
     --danger: #B91C1C;
     --success: #15803D;
-    --serif: 'Georgia', 'Times New Roman', 'Noto Serif KR', 'Nanum Myeongjo', serif;
-    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    --serif: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', sans-serif;
+    --sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; font-synthesis: none; }
@@ -65,13 +64,13 @@
 
   /* ===== Page head ===== */
   .page-head { padding: 80px 0 40px; }
-  .page-head h1 { font-family: var(--serif); font-size: clamp(34px, 6vw, 56px); font-weight: 500; letter-spacing: -1.5px; line-height: 1.12; }
+  .page-head h1 { font-family: var(--serif); font-size: clamp(34px, 6vw, 56px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.12; }
   .page-head h1 em { font-style: italic; color: var(--clay); }
   .page-head p { margin-top: 20px; max-width: 620px; color: var(--ink-soft); font-size: 17px; line-height: 1.75; }
 
   /* ===== Section ===== */
   section { padding: 48px 0; border-top: 1px solid var(--line-soft); }
-  .sec-title { font-family: var(--serif); font-size: clamp(24px, 3.4vw, 34px); font-weight: 500; letter-spacing: -0.6px; margin-bottom: 10px; }
+  .sec-title { font-family: var(--serif); font-size: clamp(24px, 3.4vw, 34px); font-weight: 700; letter-spacing: -0.6px; margin-bottom: 10px; }
   .sec-desc { color: var(--ink-soft); max-width: 640px; margin-bottom: 30px; line-height: 1.75; }
   .sub { font-size: 16px; font-weight: 700; margin: 40px 0 14px; }
   .note { font-size: 14px; color: var(--ink-muted); margin-top: 14px; line-height: 1.6; }
@@ -83,7 +82,7 @@
   }
   .symbol-hero .box { display: flex; align-items: center; justify-content: center; }
   .symbol-hero .box img { height: 180px; width: auto; }
-  .symbol-hero h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; margin-bottom: 14px; }
+  .symbol-hero h3 { font-family: var(--serif); font-size: 24px; font-weight: 700; margin-bottom: 14px; }
   .symbol-hero p { color: var(--ink-soft); line-height: 1.8; }
 
   /* ===== Variants ===== */
@@ -147,7 +146,7 @@
   .type-row:last-child { border-bottom: none; }
   .type-row .k { color: var(--ink-muted); font-size: 14px; }
   .type-row .k b { display: block; color: var(--ink); font-size: 16px; margin-bottom: 4px; }
-  .s-display { font-family: var(--serif); font-size: clamp(30px, 4.6vw, 46px); font-weight: 500; letter-spacing: -1.2px; line-height: 1.2; }
+  .s-display { font-family: var(--serif); font-size: clamp(30px, 4.6vw, 46px); font-weight: 700; letter-spacing: -1.2px; line-height: 1.2; }
   .s-display em { font-style: normal; color: var(--clay); }
   .s-body { font-size: 16px; color: var(--ink-soft); line-height: 1.75; max-width: 560px; }
   .s-body b { color: var(--ink); font-weight: 800; letter-spacing: -0.5px; }
@@ -325,13 +324,13 @@
   <!-- Typography -->
   <section>
     <h2 class="sec-title">타이포그래피</h2>
-    <p class="sec-desc">별도 폰트 파일 없이, 제목은 세리프, 본문과 워드마크는 기본 고딕을 씁니다.</p>
+    <p class="sec-desc">제목, 본문, 워드마크 모두 Pretendard 한 가지 서체를 씁니다. 제목은 굵게(700), 본문은 보통 굵기로 구분합니다.</p>
     <div class="type-row">
-      <div class="k"><b>제목</b>Georgia + Noto Serif KR</div>
+      <div class="k"><b>제목</b>Pretendard Bold (700)</div>
       <div class="s-display">고객의 능력이 <em>샘솟듯</em></div>
     </div>
     <div class="type-row">
-      <div class="k"><b>본문 · 워드마크</b>기본 고딕 (맑은 고딕, Apple SD 산돌고딕 Neo 등)</div>
+      <div class="k"><b>본문 · 워드마크</b>Pretendard (SIL OFL 1.1, 웹폰트)</div>
       <p class="s-body"><b>새암<span>정보</span></b>는 제조기업의 구매·원가·공급망 업무를 하나로 잇고, 공공사업에 특화된 IT 서비스를 제공합니다.</p>
     </div>
   </section>
